@@ -7,14 +7,13 @@ create database np1 ;
 use np1;
 
 create table alunos(
-    id int not null primary key ,
-    senha char(15) not null,
+    id int not null primary key auto_increment,
     nome char(40) not null ,
     endereco char(60) not null
 );
 
 create table cursos(
-    id int primary key not null,
+    id int primary key not null auto_increment,
     nome char(40) not null
 );
 
@@ -25,7 +24,7 @@ create table aluno_curso(
 );
 
 create table disciplinas(
-	id int primary key not null, 
+	id int primary key not null auto_increment, 
 	nome char(40) not null
 );
 
@@ -36,7 +35,7 @@ create table curso_disciplina(
 );
 
 create table professores(
-	id int primary key not null, 
+	id int primary key not null auto_increment, 
 	nome char(40) not null, 
 	formacao char(60) not null
 );
