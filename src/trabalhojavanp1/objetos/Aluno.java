@@ -20,13 +20,14 @@ public class Aluno implements PadraoDAO{
     private String nome;
     private String endereco;
     private HashMap<String,Curso> cursando;
+	private String senha;
     
     public Aluno(){
         
     }
     
-    public Aluno(String matricula, String nome, String endereco, HashMap<String,Curso> cursando){
-        this.matricula = matricula; 
+    public Aluno(String nome, String senha,String endereco, HashMap<String,Curso> cursando){
+        this.senha = senha; 
         this.nome = nome; 
         this.endereco = endereco; 
         this.cursando = cursando; 
@@ -88,4 +89,12 @@ public class Aluno implements PadraoDAO{
     public void setMatricula(HashMap<String,Curso> cursando){
         this.cursando = cursando;
     }
+
+	public String getSenha() {	
+		return this.senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 }
