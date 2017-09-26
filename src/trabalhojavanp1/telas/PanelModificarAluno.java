@@ -1,33 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhojavanp1.telas;
 
-import interfaces.PadraoFrame;
+import interfaces.PadraoPanel;
+import javax.swing.JPanel;
 import trabalhojavanp1.objetos.Aluno;
-import trabalhojavanp1.objetos.Curso;
 
 
-//TODO verificar se ja existe cursos adicionados antes de liberar a adicao dos alunos
-public class FrameAdicionarAluno implements PadraoFrame{
+public class PanelModificarAluno extends JPanel implements PadraoPanel{
     private Aluno aluno;
-    
-    public void FrameAdicionarAluno(){
+
+    public PanelModificarAluno(){
         initViews();
         initObjects();
     }
-    
+
     @Override
-    public void initViews(){
-        //COLOCAR A CONSTRUCAO DA TELA AQUI
-    } 
+    public void initViews() {
+    }
+
     @Override
-    public void initObjects(){
+    public void initObjects() {
         this.aluno = new Aluno();
     }
-    
     
     private boolean alunoIsValid(){
         if(false){
@@ -47,5 +40,3 @@ public class FrameAdicionarAluno implements PadraoFrame{
         this.aluno = aluno;
     }
 }
-
-

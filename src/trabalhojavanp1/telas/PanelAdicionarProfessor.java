@@ -1,14 +1,14 @@
 package trabalhojavanp1.telas;
 
-import interfaces.PadraoFrame;
-import javax.swing.JFrame;
+import interfaces.PadraoPanel;
+import javax.swing.JPanel;
 import trabalhojavanp1.objetos.Professor;
 
 //TODO verificar se ja existe disciplinas adicionados antes de liberar a adicao dos professores
-public class FrameAdicionarProfessor extends JFrame implements PadraoFrame{
+public class PanelAdicionarProfessor extends JPanel implements PadraoPanel{
     private Professor professor;
     
-    public FrameAdicionarProfessor(){
+    public PanelAdicionarProfessor(){
         initViews();
         initObjects();
     }

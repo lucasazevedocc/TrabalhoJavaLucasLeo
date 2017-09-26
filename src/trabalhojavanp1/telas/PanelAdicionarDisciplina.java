@@ -1,10 +1,12 @@
 package trabalhojavanp1.telas;
 
 import interfaces.PadraoFrame;
+import interfaces.PadraoPanel;
+import javax.swing.JPanel;
 import trabalhojavanp1.objetos.Disciplina;
 
 
-public class FrameAdicionarDisciplina implements PadraoFrame{
+public class PanelAdicionarDisciplina extends JPanel implements PadraoPanel{
     private Disciplina disciplina;
     
     public void FrameAdicionarDisciplina(){

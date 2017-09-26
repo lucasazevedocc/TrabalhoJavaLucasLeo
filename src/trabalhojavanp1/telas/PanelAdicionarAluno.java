@@ -5,30 +5,29 @@
  */
 package trabalhojavanp1.telas;
 
-import interfaces.PadraoFrame;
-import javax.swing.JFrame;
+import interfaces.PadraoPanel;
+import javax.swing.JPanel;
 import trabalhojavanp1.objetos.Aluno;
 
-/**
- *
- * @author Alessandra
- */
-public class FrameModificarAluno extends JFrame implements PadraoFrame{
-    private Aluno aluno;
 
-    public FrameModificarAluno(){
+//TODO verificar se ja existe cursos adicionados antes de liberar a adicao dos alunos
+public class PanelAdicionarAluno extends JPanel implements PadraoPanel{
+    private Aluno aluno;
+    
+    public void FrameAdicionarAluno(){
         initViews();
         initObjects();
     }
-
+    
     @Override
-    public void initViews() {
-    }
-
+    public void initViews(){
+        //COLOCAR A CONSTRUCAO DA TELA AQUI
+    } 
     @Override
-    public void initObjects() {
+    public void initObjects(){
         this.aluno = new Aluno();
     }
+    
     
     private boolean alunoIsValid(){
         if(false){
@@ -48,3 +47,5 @@ public class FrameModificarAluno extends JFrame implements PadraoFrame{
         this.aluno = aluno;
     }
 }
+
+

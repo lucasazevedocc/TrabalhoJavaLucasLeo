@@ -5,10 +5,10 @@ import javax.swing.JFrame;
 import trabalhojavanp1.objetos.Curso;
 
 
-public class FrameModificarCurso extends JFrame implements PadraoFrame{
+public class PanelModificarCurso extends JFrame implements PadraoFrame{
     private Curso curso;
     
-    public FrameModificarCurso(){
+    public PanelModificarCurso(){
         initViews();
         initObjects();
     }

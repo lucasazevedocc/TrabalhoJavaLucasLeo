@@ -12,27 +12,18 @@ import javax.swing.JFrame;
  *
  * @author Alessandra
  */
-public class FrameLogin extends JFrame  implements PadraoFrame{
-    private final String usuarioAdmin = "admin";
-    private final String senhaAdmin = "admin";
-
-    public FrameLogin(){
+public class PanelRemoverCurso extends JFrame implements PadraoFrame{
+    public PanelRemoverCurso(){
         initViews();
         initObjects();
     }
 
     @Override
     public void initViews() {
-        //COLOCAR A CONSTRUCAO DA TELA AQUI
     }
 
     @Override
     public void initObjects() {
     }
-    
-    private boolean verificarLogin(String usuario, String senha){
-        return (usuario != null && senha != null && usuario.equals(this.usuarioAdmin) && senha.equals(this.senhaAdmin));
-    }
-    
     
 }

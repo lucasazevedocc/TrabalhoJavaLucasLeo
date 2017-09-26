@@ -7,16 +7,16 @@ package trabalhojavanp1.telas;
 
 import interfaces.PadraoFrame;
 import javax.swing.JFrame;
-import trabalhojavanp1.objetos.Professor;
+import trabalhojavanp1.objetos.Disciplina;
 
 /**
  *
  * @author Alessandra
  */
-public class FrameModifcarProfessor extends JFrame implements PadraoFrame{
-    private Professor professor;
+public class PanelModificarDisciplina extends JFrame implements PadraoFrame{
+    private Disciplina disciplina;
     
-    public FrameModifcarProfessor(){
+    public PanelModificarDisciplina(){
         initViews();
         initObjects();
     }
@@ -27,27 +27,25 @@ public class FrameModifcarProfessor extends JFrame implements PadraoFrame{
 
     @Override
     public void initObjects() {
-        this.professor = new Professor();
+        this.disciplina = new Disciplina();
     }
 
-   
-    private boolean professorIsValid(){
+    private boolean disciplinaIsValid(){
         if(false){
             return false;
         }else{
-            this.professor = new Professor();
-            //MONTAR PROFESSOR
+            this.disciplina = new Disciplina();
+            //MONTAR DIscIPLINA
             return true;
         }
     }
     
     
     //GETTERS SETTERS
-    public Professor getProfessor() {
-        return professor;
+    public Disciplina getDisciplina() {
+        return disciplina;
     }
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
     }
-    
 }

@@ -5,15 +5,12 @@
  */
 package trabalhojavanp1.telas;
 
-import interfaces.PadraoPanel;
+import interfaces.PadraoFrame;
+import java.awt.Color;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-/**
- *
- * @author Alessandra
- */
-public class TelaPrincipal extends JPanel implements PadraoPanel{
+
+public class TelaPrincipal extends JFrame implements PadraoFrame{
     public TelaPrincipal(){
         initViews();
         initObjects();
@@ -22,10 +19,19 @@ public class TelaPrincipal extends JPanel implements PadraoPanel{
     @Override
     public void initViews() {
         //COLOCAR A CONSTRUCAO DA TELA AQUI
+        
+        this.setTitle("TelaPrincipal");
+        this.setSize(600,700);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBackground(Color.black);
+        this.setVisible(true);  
     }
 
     @Override
     public void initObjects() {
     }
     
+    public static void main(String a[]){
+        //TelaPrincipal tP = new TelaPrincipal(); 
+    }
 }
