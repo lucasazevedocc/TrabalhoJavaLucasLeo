@@ -8,7 +8,7 @@ public class ConnectionFactory {
 	
 	private static String usuario = "root";
     private static String senha = "casa";
-    private static String banco = "projeto_pai";
+    private static String banco = "np1";
     private static String ip = "127.0.0.1:3306";
     private static String driver = "com.mysql.jdbc.Driver";
     private static Connection conexao = null;
