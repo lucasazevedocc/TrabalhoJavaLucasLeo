@@ -7,13 +7,13 @@ create database np1 ;
 use np1;
 
 create table alunos(
-    matricula int not null primary key ,
+    id int not null primary key ,
+    senha char(15) not null,
     nome char(40) not null ,
     endereco char(60) not null
 );
 
 create table cursos(
-
     id int primary key not null,
     nome char(40) not null
 );
