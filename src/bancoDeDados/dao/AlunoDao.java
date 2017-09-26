@@ -11,15 +11,15 @@ public class AlunoDao {
 	private Connection connection;
 
 	public AlunoDao() {
-		this.connection = (Connection) new ConnectionFactory();
+		this.connection = (Connection) new ConnectionFactory().getConnection();
 	}
 
 	public void inserirAluno(Aluno aluno) throws SQLException {
 
 		PreparedStatement query = this.connection
-				.prepareStatement("INSERT INTO alunos(id, nome, endereco) VALUES(?, ?, ?)");
-		query.setString(1, aluno.getMatricula());
-		query.setString(2, aluno.getNome());
+				.prepareStatement("INSERT INTO alunos(nome, senha, endereco) VALUES(?, ?, ?)");
+		query.setString(1, aluno.getNome());
+		query.setString(2, aluno.getSenha());
 		query.setNString(3, aluno.getEndereco());
 		
 		query.execute();
