@@ -25,7 +25,8 @@ public class Materia implements PadraoDAO{
         
     }
     
-    public Materia(Disciplina disciplina, Professor professor, Curso curso){
+    public Materia(int codMateria, Disciplina disciplina, Professor professor, Curso curso){
+        this.codMateria = codMateria;
         this.curso = curso;
         this.disciplina = disciplina;
         this.professor = professor;
