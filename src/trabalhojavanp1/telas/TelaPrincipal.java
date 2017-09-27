@@ -119,10 +119,10 @@ public class TelaPrincipal extends JFrame implements PadraoFrame, ActionListener
         this.removerDisciplinaAction.addActionListener(this);
         this.removerCursoAction = new JMenuItem("Curso");
         this.removerCursoAction.addActionListener(this);
-        cadastroMenu.add(removerAlunoAction);
-        cadastroMenu.add(removerProfessorAction);
-        cadastroMenu.add(removerDisciplinaAction);
-        cadastroMenu.add(removerCursoAction);
+        removerMenu.add(removerAlunoAction);
+        removerMenu.add(removerProfessorAction);
+        removerMenu.add(removerDisciplinaAction);
+        removerMenu.add(removerCursoAction);
         menuBar.add(removerMenu);
         //ITEM DO MENU SAIR
         JMenu sairMenu = new JMenu("Sair");
