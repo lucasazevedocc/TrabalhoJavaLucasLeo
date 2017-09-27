@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import trabalhojavanp1.objetos.Aluno;
 
 public class AlunoDao {
@@ -17,12 +19,15 @@ public class AlunoDao {
 	public void inserirAluno(Aluno aluno) throws SQLException {
 
 		PreparedStatement query = this.connection
-				.prepareStatement("INSERT INTO alunos(nome, senha, endereco) VALUES(?, ?, ?)");
+				.prepareStatement("INSERT INTO alunos(nome, endereco) VALUES(?, ?)");
 		query.setString(1, aluno.getNome());
-		query.setString(2, aluno.getSenha());
-		query.setNString(3, aluno.getEndereco());
+		query.setString(2, aluno.getEndereco());
 		
-		query.execute();
+		if(query.execute()) {
+			System.out.println("erro ao inserir aluno");
+		}else {
+			System.out.println("aluno criado com sucesso");
+		}
 		query.close();
 		this.connection.close();
 	}
@@ -33,7 +38,8 @@ public class AlunoDao {
 				.prepareStatement("DELETE FROM alunos WHERE id = ?");
 		query.setString(1, aluno.getMatricula());
 			
-		query.execute();
+		query.executeUpdate();
+		
 		query.close();
 		this.connection.close();
 	}
