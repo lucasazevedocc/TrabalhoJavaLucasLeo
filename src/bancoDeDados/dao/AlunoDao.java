@@ -2,23 +2,21 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
+import sun.security.provider.certpath.OCSPResponse.ResponseStatus;
 import trabalhojavanp1.objetos.Aluno;
 
 public class AlunoDao {
 
-	private Connection connection;
-
-	public AlunoDao() {
-		this.connection = (Connection) new ConnectionFactory().getConnection();
-	}
 
 	public void inserirAluno(Aluno aluno) throws SQLException {
 
-		PreparedStatement query = this.connection
+		PreparedStatement query = new ConnectionFactory().getConnection()
 				.prepareStatement("INSERT INTO alunos(nome, endereco) VALUES(?, ?)");
 		query.setString(1, aluno.getNome());
 		query.setString(2, aluno.getEndereco());
@@ -29,32 +27,61 @@ public class AlunoDao {
 			System.out.println("aluno criado com sucesso");
 		}
 		query.close();
-		this.connection.close();
 	}
 
 	public void deletarAluno(Aluno aluno) throws SQLException {
 
-		PreparedStatement query = this.connection
-				.prepareStatement("DELETE FROM alunos WHERE id = ?");
-		query.setString(1, aluno.getMatricula());
+		PreparedStatement query = new ConnectionFactory().getConnection()
+				.prepareStatement("DELETE FROM alunos WHERE id=?");
+		query.setInt(1, aluno.getMatricula());
 			
-		query.executeUpdate();
+		if(query.executeUpdate() != 0) {
+			System.out.println("usuario excluido com sucesso");
+		}else {
+			System.out.println("erro");
+		}
 		
 		query.close();
-		this.connection.close();
+		
+		new AlunoCursoDao().deletaAluno(aluno);
 	}
 
 	public void alterarAluno(Aluno aluno) throws SQLException {
 
-		PreparedStatement query = this.connection
+		PreparedStatement query = new ConnectionFactory().getConnection()
 				.prepareStatement("UPDATE alunos SET nome = ?, endereco = ? WHERE id = ? ");
 		query.setString(1, aluno.getNome());
 		query.setString(2, aluno.getEndereco());
-		query.setString(3, aluno.getMatricula());
+		query.setInt(3, aluno.getMatricula());
 		
-		query.execute();
+		if(query.execute()) {
+			System.out.println("erro ao alterar");
+		}else {
+			System.out.println("usuario " + aluno.getMatricula() + " alterado com sucesso");
+		}
 		query.close();
-		this.connection.close();
+	}
+	
+	public ArrayList<Aluno> mostraAlunos() throws SQLException{
+		
+		ArrayList<Aluno> listaAlunos = new ArrayList<Aluno>();
+		
+		PreparedStatement query = new ConnectionFactory().getConnection()
+				.prepareStatement("SELECT * FROM alunos");
+		
+		ResultSet resposta = query.executeQuery();
+		
+		while(resposta.next()) {
+			Aluno a = new Aluno();
+			a.setMatricula(resposta.getInt(1));
+			a.setNome(resposta.getString(2));
+			a.setEndereco(resposta.getString(3));
+			listaAlunos.add(a);
+		}	
+		
+		query.close();
+		
+		return listaAlunos;
 	}
 
 }
