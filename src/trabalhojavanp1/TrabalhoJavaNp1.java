@@ -58,6 +58,7 @@ public class TrabalhoJavaNp1 {
         TrabalhoJavaNp1.setTelaPrincipal(new TelaPrincipal());
         TrabalhoJavaNp1.setPanelLogin(new PanelLogin());
         TrabalhoJavaNp1.setPanelTeste(new PanelTeste());
+        TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(false);
         TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelLogin());
         TrabalhoJavaNp1.getTelaPrincipal().show();
     }

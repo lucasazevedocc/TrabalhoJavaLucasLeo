@@ -81,9 +81,9 @@ public class PanelLogin extends JPanel  implements PadraoPanel, ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(verificarLogin(this.getCampoUsuario().getText(),this.getCampoSenha().getText())){
-            JOptionPane.showMessageDialog(null,"Usuario Valido");
             TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelLogin());
             TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelTeste());
+            TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
             TrabalhoJavaNp1.getTelaPrincipal().show();
         }else{
             JOptionPane.showMessageDialog(null,"Usuario Invalido");
@@ -92,6 +92,11 @@ public class PanelLogin extends JPanel  implements PadraoPanel, ActionListener{
     
     private boolean verificarLogin(String usuario, String senha){
         return (usuario != null && senha != null && usuario.equals(this.usuarioAdmin) && senha.equals(this.senhaAdmin));
+    }
+    
+    public void limparCampos(){
+        this.campoUsuario.setText("");
+        this.campoSenha.setText("");
     }
     
     //GETTERS SETTERS
