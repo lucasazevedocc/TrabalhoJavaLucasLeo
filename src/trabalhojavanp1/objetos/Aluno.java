@@ -16,7 +16,7 @@ import java.util.Objects;
  * @author Alessandra
  */
 public class Aluno implements PadraoDAO{
-    private String matricula;
+    private int matricula;
     private String nome;
     private String endereco;
     private HashMap<String,Curso> cursando;
@@ -60,10 +60,10 @@ public class Aluno implements PadraoDAO{
     }
     
     //GETTERS SETTERS
-    public String getMatricula(){
+    public int getMatricula(){
         return this.matricula;
     } 
-    public void setMatricula(String matricula){
+    public void setMatricula(int matricula){
         this.matricula = matricula;
     }
     

@@ -16,7 +16,7 @@ import java.util.Objects;
  * @author Alessandra
  */
 public class Curso implements PadraoDAO{
-    private String codCurso;
+    private int codCurso;
     private String nomeDoCurso;
     private HashMap<String,Materia> materias;
     
@@ -25,8 +25,7 @@ public class Curso implements PadraoDAO{
         
     }
     
-    public Curso(String codCurso, String nomeDoCurso, HashMap<String,Materia> materias){
-        this.codCurso = codCurso;
+    public Curso(String nomeDoCurso, HashMap<String,Materia> materias){
         this.nomeDoCurso = nomeDoCurso;
         this.materias = materias;
     }
@@ -63,10 +62,10 @@ public class Curso implements PadraoDAO{
     
     
     //GETTERS SETTERS
-    public String getCodCurso(){
+    public int getCodCurso(){
         return this.codCurso;
     } 
-    public void setCodCurso(String codCurso){
+    public void setCodCurso(int codCurso){
         this.codCurso = codCurso;
     }
     

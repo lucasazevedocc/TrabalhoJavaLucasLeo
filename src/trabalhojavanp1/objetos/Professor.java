@@ -16,7 +16,7 @@ import java.util.List;
  * @author Alessandra
  */
 public class Professor implements PadraoDAO{
-    private String registro;
+    private int registro;
     private String nome;
     private String formacao;
     private HashMap<String,Materia> lecionando;
@@ -27,8 +27,7 @@ public class Professor implements PadraoDAO{
         
     }
     
-    public Professor(String registro, String nome, String formacao, HashMap<String,Materia> lecionando, HashMap<String,Disciplina> disciplinas){
-        this.registro = registro;
+    public Professor( String nome, String formacao, HashMap<String,Materia> lecionando, HashMap<String,Disciplina> disciplinas){
         this.nome = nome;
         this.formacao = formacao;
         this.lecionando = lecionando; 
@@ -67,10 +66,10 @@ public class Professor implements PadraoDAO{
     
     
     //GETTERS SETTERS
-    public String getRegistro(){
+    public int getRegistro(){
         return this.registro;
     } 
-    public void setRegistro(String registro){
+    public void setRegistro(int registro){
         this.registro = registro;
     }
     
