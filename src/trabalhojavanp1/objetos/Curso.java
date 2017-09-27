@@ -25,8 +25,7 @@ public class Curso implements PadraoDAO{
         
     }
     
-    public Curso(int codCurso, String nomeDoCurso, HashMap<Integer,Materia> materias){
-        this.codCurso = codCurso;
+    public Curso(String nomeDoCurso, HashMap<Integer,Materia> materias){
         this.nomeDoCurso = nomeDoCurso;
         this.materias = materias;
     }

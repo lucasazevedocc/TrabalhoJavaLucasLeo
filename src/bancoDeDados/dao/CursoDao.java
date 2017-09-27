@@ -1,52 +1,69 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import trabalhojavanp1.objetos.Curso;
 
 public class CursoDao {
 
-	private Connection connection;
-
-	public CursoDao() {
-
-		this.connection = (Connection) new ConnectionFactory();
-	}
-
 	public void inserirCurso(Curso curso) throws SQLException {
 
-		PreparedStatement query = this.connection.prepareStatement("INSERT INTO cursos(id, nome) VALUES(?, ?)");
+		PreparedStatement query = new ConnectionFactory().getConnection()
+				.prepareStatement("INSERT INTO cursos(id, nome) VALUES(?, ?)");
 
-		query.setString(1, curso.getCodCurso());
+		query.setInt(1, curso.getCodCurso());
 		query.setString(2, curso.getNomeDoCurso());
 
 		query.execute();
 		query.close();
-		this.connection.close();
 	}
 
 	public void deletarCurso(Curso curso) throws SQLException {
 
-		PreparedStatement query = this.connection.prepareStatement("DELETE FROM cursos WHERE id = ?");
+		PreparedStatement query = new ConnectionFactory().getConnection()
+				.prepareStatement("DELETE FROM cursos WHERE id = ?");
 
-		query.setString(1, curso.getCodCurso());
+		query.setInt(1, curso.getCodCurso());
 
 		query.execute();
 		query.close();
-		this.connection.close();
+
+		new AlunoCursoDao().deletaCurso(curso);
 	}
-	
+
 	public void alteraNomeCurso(Curso curso) throws SQLException {
-		
-		PreparedStatement query = this.connection.prepareStatement("UPDATE cursos SET nome = ? WHERE id = ?");
+
+		PreparedStatement query = new ConnectionFactory().getConnection()
+				.prepareStatement("UPDATE cursos SET nome = ? WHERE id = ?");
 
 		query.setString(1, curso.getNomeDoCurso());
-		query.setString(2, curso.getCodCurso());
+		query.setInt(2, curso.getCodCurso());
 
 		query.execute();
 		query.close();
-		this.connection.close();
+	}
+
+	public ArrayList<Curso> mostraCursos() throws SQLException {
+
+		ArrayList<Curso> listaCursos = new ArrayList<Curso>();
+
+		PreparedStatement query = new ConnectionFactory().getConnection()
+				.prepareStatement("SELECT * FROM cursos");
+
+		ResultSet resposta = query.executeQuery();
+
+		while (resposta.next()) {
+			Curso a = new Curso();
+			a.setCodCurso(resposta.getInt(1));
+			a.setNomeDoCurso(resposta.getString(2));
+			listaCursos.add(a);
+		}
+
+		query.close();
+
+		return listaCursos;
 	}
 }
