@@ -1,6 +1,7 @@
 package test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dao.AlunoDao;
 import trabalhojavanp1.objetos.Aluno;
@@ -10,9 +11,10 @@ public class TestAlunoDao {
 	
 	public static void main(String[] args) throws SQLException {
 		
-		Aluno aluno = new Aluno("admin", "admin", "tantofaz", null);
 		AlunoDao dao = new AlunoDao();
+		ArrayList<Aluno> resposta = dao.mostraAlunos();
 		
-		dao.inserirAluno(aluno);
+		System.out.println(resposta.get(1).getNome());
+		
 	}
 }
