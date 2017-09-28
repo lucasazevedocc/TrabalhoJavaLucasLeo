@@ -27,7 +27,8 @@ public class Professor implements PadraoDAO{
         
     }
     
-    public Professor(String nome, String formacao, HashMap<Integer,Materia> lecionando, HashMap<Integer,Disciplina> disciplinas){
+    public Professor(int registro, String nome, String formacao, HashMap<Integer,Materia> lecionando, HashMap<Integer,Disciplina> disciplinas){
+        this.registro = registro;
         this.nome = nome;
         this.formacao = formacao;
         this.lecionando = lecionando; 

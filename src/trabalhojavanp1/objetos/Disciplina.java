@@ -24,7 +24,8 @@ public class Disciplina implements PadraoDAO{
         
     }
     
-    public Disciplina(String nomeDisciplina){
+    public Disciplina(int codDisciplina, String nomeDisciplina){
+        this.codDisciplina = codDisciplina;
         this.nomeDisciplina = nomeDisciplina;
     }
     
