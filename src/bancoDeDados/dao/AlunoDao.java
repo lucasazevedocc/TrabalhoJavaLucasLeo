@@ -36,6 +36,8 @@ public class AlunoDao {
 	}
 
 	public void deletarAluno(Aluno aluno) throws SQLException {
+		
+		new AlunoCursoDao().deletaAluno(aluno);
 
 		PreparedStatement query = new ConnectionFactory().getConnection()
 				.prepareStatement("DELETE FROM alunos WHERE id=?");

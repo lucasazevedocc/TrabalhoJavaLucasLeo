@@ -7,7 +7,7 @@ import trabalhojavanp1.objetos.Curso;
 import trabalhojavanp1.objetos.Disciplina;
 import trabalhojavanp1.objetos.Professor;
 
-public class CursoDisciplinaProfessor {
+public class CursoDisciplinaProfessorDao {
 
 	public void inserir(Curso curso, Professor prof, Disciplina disc) throws SQLException {
 

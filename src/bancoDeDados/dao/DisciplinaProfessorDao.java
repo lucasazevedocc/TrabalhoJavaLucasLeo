@@ -5,12 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import trabalhojavanp1.objetos.Aluno;
-import trabalhojavanp1.objetos.Curso;
 import trabalhojavanp1.objetos.Disciplina;
 import trabalhojavanp1.objetos.Professor;
 
-public class DisciplinaProfessor {
+public class DisciplinaProfessorDao {
 
 	public void inserirProfessor(Disciplina disc, Professor prof) throws SQLException {
 
@@ -37,7 +35,7 @@ public class DisciplinaProfessor {
 		query.close();
 	}
 
-	public void deletaAluno(Professor prof) throws SQLException {
+	public void deletaProfessor(Professor prof) throws SQLException {
 
 		PreparedStatement query = new ConnectionFactory().getConnection()
 				.prepareStatement("DELETE FROM disciplina_professor WHERE id_professor = ?");
