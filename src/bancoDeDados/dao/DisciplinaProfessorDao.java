@@ -17,11 +17,9 @@ public class DisciplinaProfessorDao {
 		query.setInt(1, disc.getCodDisciplina());
 		query.setInt(2, prof.getRegistro());
 
-		if (query.execute()) {
-			System.out.println("erro ao alterar");
-		} else {
-			System.out.println("sucesso");
-		}
+		query.executeUpdate();
+		System.out.println("disciplina inserida com sucesso");
+		
 		query.close();
 	}
 

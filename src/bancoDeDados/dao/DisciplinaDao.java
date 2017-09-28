@@ -10,7 +10,7 @@ import com.mysql.jdbc.Statement;
 import trabalhojavanp1.objetos.Disciplina;
 
 public class DisciplinaDao {
-	
+
 	public void inserirDisciplina(Disciplina disc) throws SQLException {
 
 		PreparedStatement query = new ConnectionFactory().getConnection()
@@ -21,18 +21,15 @@ public class DisciplinaDao {
 
 		query.executeUpdate();
 		ResultSet id = query.getGeneratedKeys();
-		
-		if(id.next()) {
-			
-			disc.setCodDisciplina(id.getInt(1));
-		}else {
-			System.out.println("erro ao criar disciplina");
-		}
+
+		disc.setCodDisciplina(id.getInt(1));
+		System.out.println("disciplina inserida com sucesso");
+
 		query.close();
 	}
 
 	public void deletarDisciplina(Disciplina disc) throws SQLException {
-		
+
 		new CursoDisciplinaProfessorDao().deletaDisciplina(disc);
 		new DisciplinaProfessorDao().deletaDisciplina(disc);
 
@@ -44,9 +41,9 @@ public class DisciplinaDao {
 		query.execute();
 		query.close();
 	}
-	
+
 	public void alteraNomeDisciplina(Disciplina disc) throws SQLException {
-		
+
 		PreparedStatement query = new ConnectionFactory().getConnection()
 				.prepareStatement("UPDATE disciplinas SET nome = ? WHERE id = ?");
 
@@ -56,13 +53,12 @@ public class DisciplinaDao {
 		query.execute();
 		query.close();
 	}
-	
+
 	public ArrayList<Disciplina> mostraDisciplinas() throws SQLException {
 
 		ArrayList<Disciplina> listaDisciplinas = new ArrayList<Disciplina>();
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("SELECT * FROM disciplinas");
+		PreparedStatement query = new ConnectionFactory().getConnection().prepareStatement("SELECT * FROM disciplinas");
 
 		ResultSet resposta = query.executeQuery();
 

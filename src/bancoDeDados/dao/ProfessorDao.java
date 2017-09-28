@@ -13,8 +13,8 @@ public class ProfessorDao {
 
 	public void inserirProfessor(Professor prof) throws SQLException {
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("INSERT INTO professores(id, nome, formacao) VALUES(?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+		PreparedStatement query = new ConnectionFactory().getConnection().prepareStatement(
+				"INSERT INTO professores(id, nome, formacao) VALUES(?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
 		query.setInt(1, prof.getRegistro());
 		query.setString(2, prof.getNome());
@@ -22,18 +22,15 @@ public class ProfessorDao {
 
 		query.executeUpdate();
 		ResultSet id = query.getGeneratedKeys();
-		
-		if(id.next()) {
-			
-			prof.setRegistro(id.getInt(1));
-		}else {
-			System.out.println("erro ao criar professor");
-		}
+
+		prof.setRegistro(id.getInt(1));
+		System.out.println("professor inserido com sucesso");
+
 		query.close();
 	}
 
 	public void deletarProfessor(Professor prof) throws SQLException {
-		
+
 		new CursoDisciplinaProfessorDao().deletaProfessor(prof);
 		new DisciplinaProfessorDao().deletaProfessor(prof);
 
@@ -63,8 +60,7 @@ public class ProfessorDao {
 
 		ArrayList<Professor> listaProfessores = new ArrayList<Professor>();
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("SELECT * FROM professores");
+		PreparedStatement query = new ConnectionFactory().getConnection().prepareStatement("SELECT * FROM professores");
 
 		ResultSet resposta = query.executeQuery();
 

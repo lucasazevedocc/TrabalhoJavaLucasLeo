@@ -17,11 +17,9 @@ public class AlunoCursoDao {
 		query.setInt(1, aluno.getMatricula());
 		query.setInt(2, curso.getCodCurso());
 
-		if (query.execute()) {
-			System.out.println("erro ao alterar");
-		} else {
-			System.out.println("usuario " + aluno.getMatricula() + " alterado com sucesso");
-		}
+		query.executeUpdate();
+		System.out.println("aluno matriculado com sucesso");
+		
 		query.close();
 	}
 

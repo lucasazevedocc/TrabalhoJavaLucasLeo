@@ -22,13 +22,9 @@ public class CursoDao {
 		query.executeUpdate();
 		ResultSet id = query.getGeneratedKeys();
 		
-		if(id.next()) {
-			
-			curso.setCodCurso(id.getInt(1));
-		}else {
-			System.out.println("erro ao criar curo");
-		}
-
+		curso.setCodCurso(id.getInt(1));
+		System.out.println("curso inserido com sucesso");
+		
 		query.close();
 	}
 

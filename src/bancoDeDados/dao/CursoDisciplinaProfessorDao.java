@@ -18,7 +18,9 @@ public class CursoDisciplinaProfessorDao {
 		query.setInt(2, disc.getCodDisciplina());
 		query.setInt(3, prof.getRegistro());
 
-		query.execute();
+		query.executeUpdate();
+		System.out.println("inserção feita com sucesso");
+		
 		query.close();
 	}
 
