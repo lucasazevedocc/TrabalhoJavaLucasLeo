@@ -1,6 +1,7 @@
 
 package trabalhojavanp1;
 
+import java.awt.BorderLayout;
 import trabalhojavanp1.telas.PanelAdicionarAluno;
 import trabalhojavanp1.telas.PanelAdicionarCurso;
 import trabalhojavanp1.telas.PanelAdicionarDisciplina;
@@ -21,11 +22,13 @@ import trabalhojavanp1.telas.PanelRemoverAluno;
 import trabalhojavanp1.telas.PanelRemoverCurso;
 import trabalhojavanp1.telas.PanelRemoverDisciplina;
 import trabalhojavanp1.telas.PanelRemoverProfessor;
-import trabalhojavanp1.telas.PanelTeste;
+import trabalhojavanp1.telas.PanelHome;
+import trabalhojavanp1.telas.PanelPrincipal;
 import trabalhojavanp1.telas.TelaPrincipal;
 
 public class TrabalhoJavaNp1 {
     private static TelaPrincipal telaPrincipal;
+    private static PanelPrincipal panelPrincipal;
     private static PanelLogin panelLogin;
     private static PanelAdicionarAluno panelAdicionarAluno;
     private static PanelAdicionarCurso panelAdicionarCurso;
@@ -46,21 +49,88 @@ public class TrabalhoJavaNp1 {
     private static PanelRemoverCurso panelRemoverCurso;
     private static PanelRemoverProfessor panelRemoverProfessor;
     private static PanelRemoverDisciplina panelRemoverDisciplina;
+    private static PanelHome panelHome;
 
-
-
-    private static PanelTeste panelTeste;
-
-
-    
-    
     public static void main(String[] args) {
+        initViews();
+    }
+    
+    private static void initViews(){
         TrabalhoJavaNp1.setTelaPrincipal(new TelaPrincipal());
+        TrabalhoJavaNp1.setPanelPrincipal(new PanelPrincipal());
         TrabalhoJavaNp1.setPanelLogin(new PanelLogin());
-        TrabalhoJavaNp1.setPanelTeste(new PanelTeste());
-        TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(false);
+        TrabalhoJavaNp1.setPanelHome(new PanelHome());
+        TrabalhoJavaNp1.setPanelAdicionarAluno(new PanelAdicionarAluno());
+        TrabalhoJavaNp1.setPanelAdicionarCurso(new PanelAdicionarCurso());
+        TrabalhoJavaNp1.setPanelAdicionarProfessor(new PanelAdicionarProfessor());
+        TrabalhoJavaNp1.setPanelAdicionarDisciplina(new PanelAdicionarDisciplina());
+        TrabalhoJavaNp1.setPanelModificarAluno(new PanelModificarAluno());
+        TrabalhoJavaNp1.setPanelModificarCurso(new PanelModificarCurso());
+        TrabalhoJavaNp1.setPanelModificarProfessor(new PanelModificarProfessor());
+        TrabalhoJavaNp1.setPanelModificarDisciplina(new PanelModificarDisciplina());
+        TrabalhoJavaNp1.setPanelRemoverAluno(new PanelRemoverAluno());
+        TrabalhoJavaNp1.setPanelRemoverCurso(new PanelRemoverCurso());
+        TrabalhoJavaNp1.setPanelRemoverProfessor(new PanelRemoverProfessor());
+        TrabalhoJavaNp1.setPanelRemoverDisciplina(new PanelRemoverDisciplina());
+        TrabalhoJavaNp1.setPanelMostrarAlunos(new PanelMostrarAlunos());
+        TrabalhoJavaNp1.setPanelMostrarCursos(new PanelMostrarCursos());
+        TrabalhoJavaNp1.setPanelMostrarProfessores(new PanelMostrarProfessores());
+        TrabalhoJavaNp1.setPanelMostrarDisciplinas(new PanelMostrarDisciplinas());
+        TrabalhoJavaNp1.setPanelMostrarCursosDoProfessor(new PanelMostrarCursosDoProfessor());
+        TrabalhoJavaNp1.setPanelMostrarDisciplinasDoProfessor(new PanelMostrarDisciplinasDoProfessor());
+        TrabalhoJavaNp1.setPanelMostrarProfessoresDoCurso(new PanelMostrarProfessoresDoCurso());
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelLogin(),PanelLogin.PANEL_LOGIN);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelHome(),PanelHome.PANEL_HOME);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelAdicionarAluno(),PanelAdicionarAluno.PANEL_ADICIONAR_ALUNO);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelAdicionarCurso(),PanelAdicionarCurso.PANEL_ADICIONAR_CURSO);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelAdicionarDisciplina(),PanelAdicionarDisciplina.PANEL_ADICIONAR_DISCIPLINA);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelAdicionarProfessor(),PanelAdicionarProfessor.PANEL_ADICIONAR_PROFESSOR);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelModificarAluno(),PanelModificarAluno.PANEL_MODIFICAR_ALUNO);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelModificarCurso(),PanelModificarCurso.PANEL_MODIFICAR_CURSO);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelModificarProfessor(),PanelModificarProfessor.PANEL_MODIFICAR_PROFESSOR);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelModificarDisciplina(),PanelModificarDisciplina.PANEL_MODIFICAR_DISCIPLINA);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelRemoverAluno(),PanelRemoverAluno.PANEL_REMOVER_ALUNO);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelRemoverCurso(),PanelRemoverCurso.PANEL_REMOVER_CURSO);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelRemoverDisciplina(),PanelRemoverDisciplina.PANEL_REMOVER_DISCIPLINA);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelRemoverProfessor(),PanelRemoverProfessor.PANEL_REMOVER_PROFESSOR);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelMostrarAlunos(),PanelMostrarAlunos.PANEL_MOSTRAR_ALUNOS);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelMostrarCursos(),PanelMostrarCursos.PANEL_MOSTRAR_CURSOS);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelMostrarDisciplinas(),PanelMostrarDisciplinas.PANEL_MOSTRAR_DISCIPLINAS);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelMostrarProfessores(),PanelMostrarProfessores.PANEL_MOSTRAR_PROFESSORES);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelMostrarCursosDoProfessor(),PanelMostrarCursosDoProfessor.PANEL_MOSTRAR_CURSOS_DO_PROFESSOR);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelMostrarProfessoresDoCurso(),PanelMostrarProfessoresDoCurso.PANEL_MOSTRAR_PROFESSORES_DO_CURSO);
+        TrabalhoJavaNp1.getPanelPrincipal().add(TrabalhoJavaNp1.getPanelMostrarDisciplinasDoProfessor(),PanelMostrarDisciplinasDoProfessor.PANEL_MOSTRAR_DISCIPLINAS_DO_PROFESSOR);
+        TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelPrincipal());
+        TrabalhoJavaNp1.getTelaPrincipal().setVisible(true);
+//TrabalhoJavaNp1.getTelaPrincipal().pack();       
+//TrabalhoJavaNp1.getTelaPrincipal().repaint();
+        /*
+        TrabalhoJavaNp1.setPanelModificarAluno(new PanelModificarAluno());
+        TrabalhoJavaNp1.setPanelModificarProfessor(new PanelModificarProfessor());
+        TrabalhoJavaNp1.setPanelModificarCurso(new PanelModificarCurso());
+        TrabalhoJavaNp1.setPanelModificarDisciplina(new PanelModificarDisciplina());
+        TrabalhoJavaNp1.setPanelMostrarAlunos(new PanelMostrarAlunos());
+        TrabalhoJavaNp1.setPanelMostrarCursos(new PanelMostrarCursos());
+        TrabalhoJavaNp1.setPanelMostrarProfessores(new PanelMostrarProfessores());
+        TrabalhoJavaNp1.setPanelMostrarDisciplinas(new PanelMostrarDisciplinas());
+        TrabalhoJavaNp1.setPanelMostrarCursosDoProfessor(new PanelMostrarCursosDoProfessor());
+        TrabalhoJavaNp1.setPanelMostrarDisciplinasDoProfessor(new PanelMostrarDisciplinasDoProfessor());
+        TrabalhoJavaNp1.setPanelMostrarProfessoresDoCurso(new PanelMostrarProfessoresDoCurso());
+        TrabalhoJavaNp1.setPanelRemoverAluno(new PanelRemoverAluno());
+        TrabalhoJavaNp1.setPanelRemoverCurso(new PanelRemoverCurso());
+        TrabalhoJavaNp1.setPanelRemoverProfessor(new PanelRemoverProfessor());
+        TrabalhoJavaNp1.setPanelRemoverDisciplina(new PanelRemoverDisciplina());
+        //TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelPrincipal(),PanelPrincipal.PANEL_PRINCIPAL);
+                
         TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelLogin());
-        TrabalhoJavaNp1.getTelaPrincipal().show();
+        //TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelHome(),PanelHome.PANEL_HOME);
+        //TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelAdicionarAluno(),PanelAdicionarAluno.PANEL_ADICIONAR_ALUNO);
+        //TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelAdicionarCurso(),PanelAdicionarCurso.PANEL_ADICIONAR_CURSO);
+        //TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelAdicionarDisciplina(),PanelAdicionarDisciplina.PANEL_ADICIONAR_DISCIPLINA);
+        //TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelAdicionarProfessor(),PanelAdicionarProfessor.PANEL_ADICIONAR_PROFESSOR);
+
+        TrabalhoJavaNp1.getTelaPrincipal().show();*/
+
     }
     
     
@@ -79,11 +149,11 @@ public class TrabalhoJavaNp1 {
         panelLogin = aPanelLogin;
     }
 
-    public static PanelTeste getPanelTeste() {
-        return panelTeste;
+    public static PanelHome getPanelHome() {
+        return panelHome;
     }
-    public static void setPanelTeste(PanelTeste aPanelTeste) {
-        panelTeste = aPanelTeste;
+    public static void setPanelHome(PanelHome aPanelTeste) {
+        panelHome = aPanelTeste;
     }
     
     public static PanelAdicionarAluno getPanelAdicionarAluno() {
@@ -217,5 +287,12 @@ public class TrabalhoJavaNp1 {
     }
     public static void setPanelRemoverDisciplina(PanelRemoverDisciplina aPanelRemoverDisciplina) {
         panelRemoverDisciplina = aPanelRemoverDisciplina;
+    }
+
+    public static PanelPrincipal getPanelPrincipal() {
+        return panelPrincipal;
+    }
+    public static void setPanelPrincipal(PanelPrincipal aPanelPrincipal) {
+        panelPrincipal = aPanelPrincipal;
     }
 }

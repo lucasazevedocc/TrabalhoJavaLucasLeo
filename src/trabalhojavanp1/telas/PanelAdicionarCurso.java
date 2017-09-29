@@ -1,11 +1,15 @@
 package trabalhojavanp1.telas;
 
 import interfaces.PadraoPanel;
+import java.awt.Font;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import trabalhojavanp1.objetos.Curso;
 
 //TODO verificar se ja existe professores adicionados antes de liberar a adicao dos cursos
 public class PanelAdicionarCurso extends JPanel implements PadraoPanel{
+    public static final String PANEL_ADICIONAR_CURSO = "PanelAdicionarCurso";
+    private JLabel labelTeste;
     private Curso curso;
     
     public PanelAdicionarCurso(){
@@ -15,6 +19,15 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel{
 
     @Override
     public void initViews() {
+        this.setLayout(null);
+
+        this.labelTeste = new JLabel("PanelAdicionarCurso");
+        this.labelTeste.setLocation(50,50);
+        this.labelTeste.setSize(200,60);
+        this.labelTeste.setFont(new Font("Serif", Font.BOLD, 24));
+        
+        this.add(this.labelTeste);
+        this.setVisible(true);
     }
 
     @Override

@@ -6,6 +6,8 @@
 package trabalhojavanp1.telas;
 
 import interfaces.PadraoFrame;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,12 +49,13 @@ public class TelaPrincipal extends JFrame implements PadraoFrame, ActionListener
     @Override
     public void initViews() {
         //COLOCAR A CONSTRUCAO DA TELA AQUI
-        
+        //this.setLayout(new CardLayout());
+                //this.setLayout(new BorderLayout());
+
         this.setTitle("TelaPrincipal");
         this.setSize(600,700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(Color.black);
-        this.setVisible(true);  
         this.setResizable(false);
         JMenuBar menuBar = new JMenuBar();
         //ITEM DO MENU CADASTRAR
@@ -130,7 +133,8 @@ public class TelaPrincipal extends JFrame implements PadraoFrame, ActionListener
         this.sairAction.addActionListener(this);
         sairMenu.add(sairAction);
         menuBar.add(sairMenu);
-        menuBar.setVisible(true);
+        
+        menuBar.setVisible(false);
         this.setJMenuBar(menuBar);
     }
 
@@ -139,83 +143,198 @@ public class TelaPrincipal extends JFrame implements PadraoFrame, ActionListener
     }
     
     public static void main(String a[]){
-        //TelaPrincipal tP = new TelaPrincipal(); 
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         //CADASTRAR
         if(ae.getSource() == this.cadastrarAlunoAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelAdicionarAluno.PANEL_ADICIONAR_ALUNO);
         }
         if(ae.getSource() == this.cadastrarProfessorAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelAdicionarProfessor.PANEL_ADICIONAR_PROFESSOR);       
         }
         if(ae.getSource() == this.cadastrarDisciplinaAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelAdicionarDisciplina.PANEL_ADICIONAR_DISCIPLINA);
         }
         if(ae.getSource() == this.cadastrarCursoAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelAdicionarCurso.PANEL_ADICIONAR_CURSO);
         }
         
         //MOSTRAR
         if(ae.getSource() == this.mostrarAlunosAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelMostrarAlunos.PANEL_MOSTRAR_ALUNOS);
         }
         if(ae.getSource() == this.mostrarProfessoresAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelMostrarProfessores.PANEL_MOSTRAR_PROFESSORES);
         }
         if(ae.getSource() == this.mostrarDisciplinasAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelMostrarDisciplinas.PANEL_MOSTRAR_DISCIPLINAS);
         }
         if(ae.getSource() == this.mostrarCursosAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelMostrarCursos.PANEL_MOSTRAR_CURSOS);
         }
         if(ae.getSource() == this.mostrarProfessoresDoCursoAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelMostrarProfessoresDoCurso.PANEL_MOSTRAR_PROFESSORES_DO_CURSO);
         }
         if(ae.getSource() == this.mostrarCursosDoProfessorAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelMostrarCursosDoProfessor.PANEL_MOSTRAR_CURSOS_DO_PROFESSOR);
         }
         if(ae.getSource() == this.mostrarDisciplinasDoProfessorAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelMostrarDisciplinasDoProfessor.PANEL_MOSTRAR_DISCIPLINAS_DO_PROFESSOR);
         }
         
         //MANUTENCAo
         if(ae.getSource() == this.modificarAlunoAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelModificarAluno.PANEL_MODIFICAR_ALUNO);
         }
         if(ae.getSource() == this.modificarCursoAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelModificarCurso.PANEL_MODIFICAR_CURSO);
         }
         if(ae.getSource() == this.modificarDisciplinaAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelModificarDisciplina.PANEL_MODIFICAR_DISCIPLINA);
         }
         if(ae.getSource() == this.modificarProfessorAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelModificarProfessor.PANEL_MODIFICAR_PROFESSOR);
         }
         
         //REMOVER
         if(ae.getSource() == this.removerAlunoAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelRemoverAluno.PANEL_REMOVER_ALUNO);
         }
         if(ae.getSource() == this.removerProfessorAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelRemoverProfessor.PANEL_REMOVER_PROFESSOR);
         }
         if(ae.getSource() == this.removerDisciplinaAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelRemoverDisciplina.PANEL_REMOVER_DISCIPLINA);
         }
         if(ae.getSource() == this.removerCursoAction){
-            JOptionPane.showMessageDialog(null, "Selected Item: " + ae.getActionCommand());
+            exibirPanel(PanelRemoverCurso.PANEL_REMOVER_CURSO);
         }
         
         //SAIR
         if(ae.getSource() == this.sairAction){
-            TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelTeste());
             TrabalhoJavaNp1.getPanelLogin().limparCampos();
-            TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelLogin());
-            TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(false);
-            TrabalhoJavaNp1.getTelaPrincipal().show();        
+            exibirPanel(PanelLogin.PANEL_LOGIN);        
         }
+    }
+    
+    public void exibirPanel(String tagPanel){
+        CardLayout card = (CardLayout) TrabalhoJavaNp1.getPanelPrincipal().getLayout();
+        switch(tagPanel){
+            case PanelLogin.PANEL_LOGIN:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelLogin.PANEL_LOGIN);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(false);
+                break;
+            case PanelHome.PANEL_HOME:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelHome.PANEL_HOME);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelAdicionarAluno.PANEL_ADICIONAR_ALUNO:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelAdicionarAluno.PANEL_ADICIONAR_ALUNO);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelAdicionarCurso.PANEL_ADICIONAR_CURSO:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelAdicionarCurso.PANEL_ADICIONAR_CURSO);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelAdicionarDisciplina.PANEL_ADICIONAR_DISCIPLINA:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelAdicionarDisciplina.PANEL_ADICIONAR_DISCIPLINA);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelAdicionarProfessor.PANEL_ADICIONAR_PROFESSOR:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelAdicionarProfessor.PANEL_ADICIONAR_PROFESSOR);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelModificarAluno.PANEL_MODIFICAR_ALUNO:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelModificarAluno.PANEL_MODIFICAR_ALUNO);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelModificarCurso.PANEL_MODIFICAR_CURSO:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelModificarCurso.PANEL_MODIFICAR_CURSO);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelModificarDisciplina.PANEL_MODIFICAR_DISCIPLINA:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelModificarDisciplina.PANEL_MODIFICAR_DISCIPLINA);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelModificarProfessor.PANEL_MODIFICAR_PROFESSOR:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelModificarProfessor.PANEL_MODIFICAR_PROFESSOR);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelRemoverAluno.PANEL_REMOVER_ALUNO:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelRemoverAluno.PANEL_REMOVER_ALUNO);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelRemoverCurso.PANEL_REMOVER_CURSO:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelRemoverCurso.PANEL_REMOVER_CURSO);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelRemoverDisciplina.PANEL_REMOVER_DISCIPLINA:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelRemoverDisciplina.PANEL_REMOVER_DISCIPLINA);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelRemoverProfessor.PANEL_REMOVER_PROFESSOR:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelRemoverProfessor.PANEL_REMOVER_PROFESSOR);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelMostrarAlunos.PANEL_MOSTRAR_ALUNOS:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelMostrarAlunos.PANEL_MOSTRAR_ALUNOS);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelMostrarCursos.PANEL_MOSTRAR_CURSOS:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelMostrarCursos.PANEL_MOSTRAR_CURSOS);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelMostrarDisciplinas.PANEL_MOSTRAR_DISCIPLINAS:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelMostrarDisciplinas.PANEL_MOSTRAR_DISCIPLINAS);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelMostrarProfessores.PANEL_MOSTRAR_PROFESSORES:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelMostrarProfessores.PANEL_MOSTRAR_PROFESSORES);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelMostrarCursosDoProfessor.PANEL_MOSTRAR_CURSOS_DO_PROFESSOR:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelMostrarCursosDoProfessor.PANEL_MOSTRAR_CURSOS_DO_PROFESSOR);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelMostrarDisciplinasDoProfessor.PANEL_MOSTRAR_DISCIPLINAS_DO_PROFESSOR:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelMostrarDisciplinasDoProfessor.PANEL_MOSTRAR_DISCIPLINAS_DO_PROFESSOR);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            case PanelMostrarProfessoresDoCurso.PANEL_MOSTRAR_PROFESSORES_DO_CURSO:
+                card.show(TrabalhoJavaNp1.getPanelPrincipal(), PanelMostrarProfessoresDoCurso.PANEL_MOSTRAR_PROFESSORES_DO_CURSO);
+                TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
+                break;
+            default:
+                break;
+        }
+    }
+    
+    private void removerTodosPanels(){
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelLogin());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelHome());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelAdicionarCurso());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelAdicionarAluno());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelAdicionarDisciplina());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelAdicionarProfessor());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelRemoverCurso());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelRemoverAluno());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelRemoverDisciplina());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelRemoverProfessor());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelModificarCurso());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelModificarAluno());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelModificarDisciplina());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelModificarProfessor());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelMostrarCursos());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelMostrarAlunos());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelMostrarDisciplinas());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelMostrarProfessores());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelMostrarProfessoresDoCurso());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelMostrarDisciplinasDoProfessor());
+        TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelMostrarCursosDoProfessor());
+
+
+
     }
 }
