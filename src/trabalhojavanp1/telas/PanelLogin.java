@@ -6,6 +6,7 @@
 package trabalhojavanp1.telas;
 
 import interfaces.PadraoPanel;
+import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ import trabalhojavanp1.TrabalhoJavaNp1;
 
 public class PanelLogin extends JPanel  implements PadraoPanel, ActionListener{
     //ENUM
+    public static final String PANEL_LOGIN = "PanelLogin";
     private final String usuarioAdmin = "admin";
     private final String senhaAdmin = "admin";
     //COMPONENTES
@@ -81,10 +83,7 @@ public class PanelLogin extends JPanel  implements PadraoPanel, ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(verificarLogin(this.getCampoUsuario().getText(),this.getCampoSenha().getText())){
-            TrabalhoJavaNp1.getTelaPrincipal().remove(TrabalhoJavaNp1.getPanelLogin());
-            TrabalhoJavaNp1.getTelaPrincipal().add(TrabalhoJavaNp1.getPanelTeste());
-            TrabalhoJavaNp1.getTelaPrincipal().getJMenuBar().setVisible(true);
-            TrabalhoJavaNp1.getTelaPrincipal().show();
+            TrabalhoJavaNp1.getTelaPrincipal().exibirPanel(PanelHome.PANEL_HOME);
         }else{
             JOptionPane.showMessageDialog(null,"Usuario Invalido");
         }

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package trabalhojavanp1.telas;
 
 import interfaces.PadraoPanel;
@@ -7,33 +12,36 @@ import javax.swing.JPanel;
 import trabalhojavanp1.objetos.Aluno;
 
 
-public class PanelModificarAluno extends JPanel implements PadraoPanel{
-    public static final String PANEL_MODIFICAR_ALUNO = "PanelModificarAluno";
-    private JLabel labelTeste;
+//TODO verificar se ja existe cursos adicionados antes de liberar a adicao dos alunos
+public class PanelHome extends JPanel implements PadraoPanel{
+    public static final String PANEL_HOME = "PanelHome";
     private Aluno aluno;
+    private JLabel labelTeste;
 
-    public PanelModificarAluno(){
+    
+    public PanelHome(){
         initViews();
         initObjects();
     }
-
+    
     @Override
-    public void initViews() {
+    public void initViews(){
+        //COLOCAR A CONSTRUCAO DA TELA AQUI
         this.setLayout(null);
 
-        this.labelTeste = new JLabel("PanelModificarAluno");
+        this.labelTeste = new JLabel("PANEL HOME");
         this.labelTeste.setLocation(50,50);
         this.labelTeste.setSize(200,60);
         this.labelTeste.setFont(new Font("Serif", Font.BOLD, 24));
         
         this.add(this.labelTeste);
         this.setVisible(true);
-    }
-
+    } 
     @Override
-    public void initObjects() {
+    public void initObjects(){
         this.aluno = new Aluno();
     }
+    
     
     private boolean alunoIsValid(){
         if(false){
@@ -53,3 +61,5 @@ public class PanelModificarAluno extends JPanel implements PadraoPanel{
         this.aluno = aluno;
     }
 }
+
+
