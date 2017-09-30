@@ -1,9 +1,9 @@
-package test;
+package bancoDeDados.test;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dao.AlunoCursoDao;
+import bancoDeDados.dao.AlunoCursoDao;
 import trabalhojavanp1.objetos.Aluno;
 import trabalhojavanp1.objetos.Curso;
 

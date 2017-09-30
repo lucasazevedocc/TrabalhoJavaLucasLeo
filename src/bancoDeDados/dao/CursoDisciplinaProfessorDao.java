@@ -1,4 +1,4 @@
-package dao;
+package bancoDeDados.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,7 +19,7 @@ public class CursoDisciplinaProfessorDao {
 		query.setInt(3, prof.getRegistro());
 
 		query.executeUpdate();
-		System.out.println("inserção feita com sucesso");
+		System.out.println("inserï¿½ï¿½o feita com sucesso");
 		
 		query.close();
 	}
