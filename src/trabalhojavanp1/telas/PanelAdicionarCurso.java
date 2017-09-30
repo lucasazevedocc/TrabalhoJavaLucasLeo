@@ -9,7 +9,9 @@ import trabalhojavanp1.objetos.Curso;
 //TODO verificar se ja existe professores adicionados antes de liberar a adicao dos cursos
 public class PanelAdicionarCurso extends JPanel implements PadraoPanel{
     public static final String PANEL_ADICIONAR_CURSO = "PanelAdicionarCurso";
+    //COMPONENTES
     private JLabel labelTeste;
+    //OBJECTS
     private Curso curso;
     
     public PanelAdicionarCurso(){
@@ -27,6 +29,7 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel{
         this.labelTeste.setFont(new Font("Serif", Font.BOLD, 24));
         
         this.add(this.labelTeste);
+        
         this.setVisible(true);
     }
 
