@@ -58,6 +58,21 @@ public class Disciplina implements PadraoDAO{
         return list;    
     }
     
+     public String gerarString(){
+        String string = "teste";
+        /*if( this.matricula != 0){
+            string += ("Matricula: "+this.matricula+"\n");
+        }
+        if( this.nome != null && !this.nome.isEmpty()){
+            string += ("Nome: "+this.nome+"\n");
+        }
+        if( this.endereco != null && !this.endereco.isEmpty()){
+            string += ("Endereco: "+this.endereco+"\n");
+        }*/
+        
+        return string;
+    }
+    
     //GETTERS SETTERS
     public int getCodDisciplina(){
         return this.codDisciplina;

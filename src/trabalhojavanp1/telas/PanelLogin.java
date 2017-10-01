@@ -95,8 +95,8 @@ public class PanelLogin extends JPanel  implements PadraoPanel, ActionListener{
     }
     
     private boolean verificarLogin(String usuario, String senha){
-        //return true;
-        return (usuario != null && senha != null && usuario.equals(this.usuarioAdmin) && senha.equals(this.senhaAdmin));
+        return true;
+        //return (usuario != null && senha != null && usuario.equals(this.usuarioAdmin) && senha.equals(this.senhaAdmin));
     }
     
     public void limparCampos(){

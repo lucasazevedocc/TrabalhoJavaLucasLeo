@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhojavanp1.objetos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import interfaces.PadraoDAO;
 
-/**
- *
- * @author Alessandra
- */
 public class Aluno implements PadraoDAO{
     private int matricula;
     private String nome;
@@ -58,6 +48,21 @@ public class Aluno implements PadraoDAO{
     public List<Object> buscarTodos() {
         List<Object> list = new ArrayList<Object>();
         return list;
+    }
+    
+    public String gerarString(){
+        String string = "";
+        if( this.matricula != 0){
+            string += ("Matricula: "+this.matricula+"\n");
+        }
+        if( this.nome != null && !this.nome.isEmpty()){
+            string += ("Nome: "+this.nome+"\n");
+        }
+        if( this.endereco != null && !this.endereco.isEmpty()){
+            string += ("Endereco: "+this.endereco+"\n");
+        }
+        
+        return string;
     }
     
     //GETTERS SETTERS
