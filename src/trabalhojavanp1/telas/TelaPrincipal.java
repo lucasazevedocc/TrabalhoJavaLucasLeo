@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhojavanp1.telas;
 
 import interfaces.PadraoFrame;
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -15,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import trabalhojavanp1.TrabalhoJavaNp1;
 
 
@@ -39,7 +32,9 @@ public class TelaPrincipal extends JFrame implements PadraoFrame, ActionListener
     private JMenuItem removerProfessorAction;
     private JMenuItem removerDisciplinaAction;
     private JMenuItem removerCursoAction;
-    private JMenuItem sairAction;
+    private JMenuItem sairLoginAction;
+    private JMenuItem sairFecharAction;
+
 
     public TelaPrincipal(){
         initViews();
@@ -129,9 +124,12 @@ public class TelaPrincipal extends JFrame implements PadraoFrame, ActionListener
         menuBar.add(removerMenu);
         //ITEM DO MENU SAIR
         JMenu sairMenu = new JMenu("Sair");
-        this.sairAction = new JMenuItem("Ir Login");
-        this.sairAction.addActionListener(this);
-        sairMenu.add(sairAction);
+        this.sairLoginAction = new JMenuItem("Ir Login");
+        this.sairLoginAction.addActionListener(this);
+        this.sairFecharAction = new JMenuItem("Fechar");
+        this.sairFecharAction.addActionListener(this);
+        sairMenu.add(sairLoginAction);
+        sairMenu.add(sairFecharAction);
         menuBar.add(sairMenu);
         
         menuBar.setVisible(false);
@@ -213,9 +211,12 @@ public class TelaPrincipal extends JFrame implements PadraoFrame, ActionListener
         }
         
         //SAIR
-        if(ae.getSource() == this.sairAction){
+        if(ae.getSource() == this.sairLoginAction){
             TrabalhoJavaNp1.getPanelLogin().limparCampos();
             exibirPanel(PanelLogin.PANEL_LOGIN);        
+        }
+        if(ae.getSource() == this.sairFecharAction){
+                
         }
     }
     

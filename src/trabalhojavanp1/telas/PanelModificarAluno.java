@@ -40,18 +40,18 @@ public class PanelModificarAluno extends JPanel implements PadraoPanel{
         this.getLabelTitulo().setFont(new Font("Serif", Font.BOLD, 14));
         
         this.setLabelMatriculaAlunoBusca(new JLabel("Matricula do aluno: "));
-        this.getLabelMatriculaAlunoBusca().setLocation(50,65);
+        this.getLabelMatriculaAlunoBusca().setLocation(40,65);
         this.getLabelMatriculaAlunoBusca().setSize(160,30);
         this.getLabelMatriculaAlunoBusca().setFont(new Font("Serif", Font.BOLD, 14));
         
         this.setCampoMatriculaAluno(new JTextField());
-        this.getCampoMatriculaAluno().setSize(200,30);
+        this.getCampoMatriculaAluno().setSize(190,30);
         this.getCampoMatriculaAluno().setLocation(200,65);
         this.getCampoMatriculaAluno().setFont(new Font("Serif", Font.BOLD, 18));
         
         this.setBotaoBuscar(new JButton("Buscar"));
         this.getBotaoBuscar().setSize(120,30);
-        this.getBotaoBuscar().setLocation(430,65);
+        this.getBotaoBuscar().setLocation(420,65);
         this.getBotaoBuscar().setBackground(new Color(150,220,255));
         //this.getBotaoSalvar().addActionListener(this);
         this.getBotaoBuscar().setFont(new Font("Times New Roman", Font.BOLD, 16));

@@ -30,8 +30,6 @@ public class PanelModificarProfessor extends JPanel implements PadraoPanel{
     private JPanel panelCheckBoxGroupDisciplinas,panelButtonGroupFormacao;
     private JRadioButton radioButtonBacharelado,radioButtonMestrado,radioButtonDoutorado;
     private ButtonGroup buttonGroupFormacaoProfessor;
-
-
     //OBJECTS
     private Professor professor;
     
@@ -50,18 +48,18 @@ public class PanelModificarProfessor extends JPanel implements PadraoPanel{
         this.getLabelTitulo().setFont(new Font("Serif", Font.BOLD, 14));
         
         this.setLabelRegistroProfessorBusca(new JLabel("Registro do professor: "));
-        this.getLabelRegistroProfessorBusca().setLocation(50,65);
+        this.getLabelRegistroProfessorBusca().setLocation(40,65);
         this.getLabelRegistroProfessorBusca().setSize(160,30);
         this.getLabelRegistroProfessorBusca().setFont(new Font("Serif", Font.BOLD, 14));
         
         this.setCampoMatriculaProfessor(new JTextField());
         this.getCampoMatriculaProfessor().setSize(200,30);
-        this.getCampoMatriculaProfessor().setLocation(200,65);
+        this.getCampoMatriculaProfessor().setLocation(190,65);
         this.getCampoMatriculaProfessor().setFont(new Font("Serif", Font.BOLD, 18));
         
         this.setBotaoBuscar(new JButton("Buscar"));
         this.getBotaoBuscar().setSize(120,30);
-        this.getBotaoBuscar().setLocation(430,65);
+        this.getBotaoBuscar().setLocation(420,65);
         this.getBotaoBuscar().setBackground(new Color(150,220,255));
         //this.getBotaoSalvar().addActionListener(this);
         this.getBotaoBuscar().setFont(new Font("Times New Roman", Font.BOLD, 16));
