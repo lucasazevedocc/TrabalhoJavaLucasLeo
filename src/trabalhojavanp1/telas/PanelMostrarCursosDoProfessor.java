@@ -66,7 +66,6 @@ public class PanelMostrarCursosDoProfessor extends JPanel implements PadraoPanel
        
         this.add(getLabelTitulo());
         this.add(getLabelCursosDoProfessor());
-        this.add(getLabelCursosDoProfessor());
         this.add(getTextAreaCursosDoProfessor());
         this.add(getLabelRegistroDoProfessor());
         this.add(getCampoRegistroProfessor());

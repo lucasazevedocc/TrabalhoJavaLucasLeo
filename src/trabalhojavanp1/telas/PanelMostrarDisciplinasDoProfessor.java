@@ -1,6 +1,5 @@
 package trabalhojavanp1.telas;
 
-import interfaces.PadraoFrame;
 import interfaces.PadraoPanel;
 import java.awt.Color;
 import java.awt.Font;
