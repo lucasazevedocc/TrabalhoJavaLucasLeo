@@ -22,19 +22,23 @@ public class Curso implements PadraoDAO{
     }
    
     @Override
-    public void salvarAtual() {
+    public boolean salvarAtual() {
+        return false;
     }
 
     @Override
-    public void atualizarAtual() {
+    public boolean atualizarAtual() {
+        return false;
     }
 
     @Override
-    public void deletarAtual() {
+    public boolean deletarAtual() {
+        return false;
     }
 
     @Override
-    public void deletarByKey(int key) {
+    public boolean deletarByKey(int key) {
+        return false;
     }
 
     @Override
