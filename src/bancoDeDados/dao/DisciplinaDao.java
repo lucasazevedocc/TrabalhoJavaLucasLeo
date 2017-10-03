@@ -11,47 +11,73 @@ import trabalhojavanp1.objetos.Disciplina;
 
 public class DisciplinaDao {
 
-	public void inserirDisciplina(Disciplina disc) throws SQLException {
+	public boolean inserirDisciplina(Disciplina disc) {
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("INSERT INTO disciplinas(id, nome) VALUES(?, ?)", Statement.RETURN_GENERATED_KEYS);
+		PreparedStatement query;
+		try {
+			query = new ConnectionFactory().getConnection()
+					.prepareStatement("INSERT INTO disciplinas(id, nome) VALUES(?, ?)", Statement.RETURN_GENERATED_KEYS);
+			
+			query.setInt(1, disc.getCodDisciplina());
+			query.setString(2, disc.getNomeDisciplina());
 
-		query.setInt(1, disc.getCodDisciplina());
-		query.setString(2, disc.getNomeDisciplina());
+			query.executeUpdate();
+			ResultSet id = query.getGeneratedKeys();
 
-		query.executeUpdate();
-		ResultSet id = query.getGeneratedKeys();
+			disc.setCodDisciplina(id.getInt(1));
+			System.out.println("disciplina inserida com sucesso");
 
-		disc.setCodDisciplina(id.getInt(1));
-		System.out.println("disciplina inserida com sucesso");
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
 
-		query.close();
+		
 	}
 
-	public void deletarDisciplina(Disciplina disc) throws SQLException {
+	public boolean deletarDisciplina(Disciplina disc) {
 
-		new CursoDisciplinaProfessorDao().deletaDisciplina(disc);
-		new DisciplinaProfessorDao().deletaDisciplina(disc);
+		try {
+			new CursoDisciplinaProfessorDao().deletaDisciplina(disc);
+			
+			new DisciplinaProfessorDao().deletaDisciplina(disc);
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("DELETE FROM disciplinas WHERE id = ?");
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM disciplinas WHERE id = ?");
 
-		query.setInt(1, disc.getCodDisciplina());
+			query.setInt(1, disc.getCodDisciplina());
 
-		query.execute();
-		query.close();
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+		
 	}
 
-	public void alteraNomeDisciplina(Disciplina disc) throws SQLException {
+	public boolean alteraNomeDisciplina(Disciplina disc) {
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("UPDATE disciplinas SET nome = ? WHERE id = ?");
+		PreparedStatement query;
+		try {
+			query = new ConnectionFactory().getConnection()
+					.prepareStatement("UPDATE disciplinas SET nome = ? WHERE id = ?");
+			
+			query.setString(1, disc.getNomeDisciplina());
+			query.setInt(2, disc.getCodDisciplina());
 
-		query.setString(1, disc.getNomeDisciplina());
-		query.setInt(2, disc.getCodDisciplina());
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
 
-		query.execute();
-		query.close();
+		
 	}
 
 	public ArrayList<Disciplina> mostraDisciplinas() throws SQLException {

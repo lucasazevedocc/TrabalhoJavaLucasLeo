@@ -11,49 +11,75 @@ import trabalhojavanp1.objetos.Professor;
 
 public class ProfessorDao {
 
-	public void inserirProfessor(Professor prof) throws SQLException {
+	public boolean inserirProfessor(Professor prof) {
 
-		PreparedStatement query = new ConnectionFactory().getConnection().prepareStatement(
-				"INSERT INTO professores(id, nome, formacao) VALUES(?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+		PreparedStatement query;
+		try {
+			query = new ConnectionFactory().getConnection().prepareStatement(
+					"INSERT INTO professores(id, nome, formacao) VALUES(?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			
+			query.setInt(1, prof.getRegistro());
+			query.setString(2, prof.getNome());
+			query.setString(3, prof.getFormacao());
 
-		query.setInt(1, prof.getRegistro());
-		query.setString(2, prof.getNome());
-		query.setString(3, prof.getFormacao());
+			query.executeUpdate();
+			ResultSet id = query.getGeneratedKeys();
 
-		query.executeUpdate();
-		ResultSet id = query.getGeneratedKeys();
+			prof.setRegistro(id.getInt(1));
+			System.out.println("professor inserido com sucesso");
 
-		prof.setRegistro(id.getInt(1));
-		System.out.println("professor inserido com sucesso");
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
 
-		query.close();
+		
 	}
 
-	public void deletarProfessor(Professor prof) throws SQLException {
+	public boolean deletarProfessor(Professor prof) {
 
-		new CursoDisciplinaProfessorDao().deletaProfessor(prof);
-		new DisciplinaProfessorDao().deletaProfessor(prof);
+		try {
+			new CursoDisciplinaProfessorDao().deletaProfessor(prof);
+			
+			new DisciplinaProfessorDao().deletaProfessor(prof);
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("DELETE FROM professores WHERE id = ?");
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM professores WHERE id = ?");
 
-		query.setInt(1, prof.getRegistro());
+			query.setInt(1, prof.getRegistro());
 
-		query.execute();
-		query.close();
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+		
 	}
 
-	public void alteraNomeCurso(Professor prof) throws SQLException {
+	public boolean alteraNomeCurso(Professor prof) {
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("UPDATE professores SET nome = ?, formacao = ? WHERE id = ?");
+		PreparedStatement query;
+		try {
+			query = new ConnectionFactory().getConnection()
+					.prepareStatement("UPDATE professores SET nome = ?, formacao = ? WHERE id = ?");
+			
+			query.setString(1, prof.getNome());
+			query.setString(2, prof.getFormacao());
+			query.setInt(2, prof.getRegistro());
 
-		query.setString(1, prof.getNome());
-		query.setString(2, prof.getFormacao());
-		query.setInt(2, prof.getRegistro());
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
 
-		query.execute();
-		query.close();
+		
 	}
 
 	public ArrayList<Professor> mostraProfessores() throws SQLException {

@@ -1,35 +1,18 @@
 package trabalhojavanp1.telas;
 
-import interfaces.PadraoPanel;
-<<<<<<< HEAD
-
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.JButton;
-=======
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
->>>>>>> 9ec8f4109d365c5182dc4e0a9c47194cb9930720
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-<<<<<<< HEAD
 import javax.swing.JTextField;
 
+import interfaces.PadraoPanel;
 import trabalhojavanp1.objetos.Curso;
-import trabalhojavanp1.objetos.Disciplina;
-=======
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import trabalhojavanp1.objetos.Curso;
-import trabalhojavanp1.objetos.Professor;
->>>>>>> 9ec8f4109d365c5182dc4e0a9c47194cb9930720
 
 //TODO verificar se ja existe professores adicionados antes de liberar a adicao dos cursos
 public class PanelAdicionarCurso extends JPanel implements PadraoPanel{
