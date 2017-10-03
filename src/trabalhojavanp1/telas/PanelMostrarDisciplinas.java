@@ -53,7 +53,11 @@ public class PanelMostrarDisciplinas extends JPanel implements PadraoPanel{
     @Override
     public void initObjects() {
         this.setDisciplinas(new Disciplina().buscarTodos());
-
+    }
+    
+    @Override
+    public void initControles() {
+        //this.salvando = false;
     }
     
      private void inserirDisciplinasNoTextArea(){

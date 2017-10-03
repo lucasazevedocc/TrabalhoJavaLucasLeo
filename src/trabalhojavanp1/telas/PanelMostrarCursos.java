@@ -56,7 +56,11 @@ public class PanelMostrarCursos extends JPanel implements PadraoPanel{
     @Override
     public void initObjects() {
         this.setCursos(new Curso().buscarTodos());
-
+    }
+    
+    @Override
+    public void initControles() {
+        //this.salvando = false;
     }
     
      private void inserirCursosNoTextArea(){

@@ -61,6 +61,11 @@ public class PanelRemoverAluno extends JPanel implements PadraoPanel{
     public void initObjects() {
     }
     
+    @Override
+    public void initControles() {
+        //this.salvando = false;
+    }
+    
     //GETTERS SETTERS
     public JLabel getLabelTitulo() {
         return labelTitulo;

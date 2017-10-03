@@ -104,6 +104,11 @@ public class PanelLogin extends JPanel  implements PadraoPanel, ActionListener{
         this.campoSenha.setText("");
     }
     
+    @Override
+    public void initControles() {
+        //this.salvando = false;
+    }
+    
     //GETTERS SETTERS
     public JTextField getCampoUsuario() {
         return campoUsuario;

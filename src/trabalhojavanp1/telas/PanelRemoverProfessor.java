@@ -1,12 +1,10 @@
 
 package trabalhojavanp1.telas;
 
-import interfaces.PadraoFrame;
 import interfaces.PadraoPanel;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -60,6 +58,11 @@ public class PanelRemoverProfessor extends JPanel implements PadraoPanel{
 
     @Override
     public void initObjects() {
+    }
+    
+    @Override
+    public void initControles() {
+        //this.salvando = false;
     }
     
     //GETTERS SETTERS

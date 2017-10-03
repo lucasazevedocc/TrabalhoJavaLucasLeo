@@ -126,6 +126,11 @@ public class PanelModificarAluno extends JPanel implements PadraoPanel{
         this.setAluno(null);
     }
     
+    @Override
+    public void initControles() {
+        //this.salvando = false;
+    }
+    
     private void gerarCursos() {
         this.getPanelCheckBoxGroupCursos().add(new JCheckBox("Arquitetura"));
         this.getPanelCheckBoxGroupCursos().add(new JCheckBox("Ciencias da computacao aaabbbcccvvvaaabbbcccvvv"));

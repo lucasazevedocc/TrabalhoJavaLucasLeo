@@ -2,18 +2,14 @@ package trabalhojavanp1.telas;
 
 import interfaces.PadraoPanel;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import trabalhojavanp1.objetos.Curso;
-import trabalhojavanp1.objetos.Professor;
 
 
 public class PanelModificarCurso extends JPanel implements PadraoPanel{
@@ -111,6 +107,11 @@ public class PanelModificarCurso extends JPanel implements PadraoPanel{
     @Override
     public void initObjects() {
         this.curso = null;
+    }
+    
+    @Override
+    public void initControles() {
+        //this.salvando = false;
     }
     
     private boolean cursoIsValid(){

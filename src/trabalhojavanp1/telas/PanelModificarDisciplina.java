@@ -101,6 +101,10 @@ public class PanelModificarDisciplina extends JPanel implements PadraoPanel{
         }
     }
     
+    @Override
+    public void initControles() {
+       // this.salvando = false;
+    }
     
     //GETTERS SETTERS
     public Disciplina getDisciplina() {

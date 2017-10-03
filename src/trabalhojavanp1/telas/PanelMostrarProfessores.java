@@ -57,7 +57,11 @@ public class PanelMostrarProfessores extends JPanel implements PadraoPanel{
     @Override
     public void initObjects() {
         this.setProfessores(new Professor().buscarTodos());
-
+    }
+    
+    @Override
+    public void initControles() {
+       // this.salvando = false;
     }
     
      private void inserirProfessoresNoTextArea(){

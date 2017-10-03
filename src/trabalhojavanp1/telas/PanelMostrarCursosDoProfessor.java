@@ -79,7 +79,11 @@ public class PanelMostrarCursosDoProfessor extends JPanel implements PadraoPanel
     public void initObjects() {
         //TODO MODFICAR LOGICA
         this.setProfessor(null);
-
+    }
+    
+    @Override
+    public void initControles() {
+        //this.salvando = false;
     }
     
      private void inserirCursosDoProfessorNoTextArea(){

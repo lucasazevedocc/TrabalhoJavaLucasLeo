@@ -89,6 +89,11 @@ public class PanelMostrarAlunos extends JPanel implements PadraoPanel{
         this.setAlunos(new Aluno().buscarTodos());
     }
     
+    @Override
+    public void initControles() {
+        //this.salvando = false;
+    }
+    
     private void inserirAlunosNoTextArea(){
         if(this.getAlunos().size() == 0){
            // this.getPanelAlunosDaFaculdade().add(this.getLabelNaoHaAlunos());

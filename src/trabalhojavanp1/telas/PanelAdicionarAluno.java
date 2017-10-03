@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -12,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import trabalhojavanp1.objetos.Aluno;
+import trabalhojavanp1.objetos.Curso;
 
 
 //TODO verificar se ja existe cursos adicionados antes de liberar a adicao dos alunos
@@ -24,10 +28,15 @@ public class PanelAdicionarAluno extends JPanel implements PadraoPanel,ActionLis
     private JButton botaoSalvar;
     //OBJETOS
     private Aluno aluno;
+    private List<Object> cursosDisponiveis;
+    //CONTROLES
+    private boolean salvando;
+
     
     public PanelAdicionarAluno(){
-        initViews();
+        initControles();
         initObjects();
+        initViews();
     }
     
     @Override
@@ -108,23 +117,53 @@ public class PanelAdicionarAluno extends JPanel implements PadraoPanel,ActionLis
     }
     
     @Override
+    public void initControles() {
+        this.salvando = false;
+    }
+    
+    @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == this.botaoSalvar){
-           // exibirPanel(PanelAdicionarAluno.PANEL_ADICIONAR_ALUNO);
+            if(!salvando){
+                this.salvando = true;
+                this.aluno = new Aluno();
+                this.aluno.setNome(this.campoNomeAluno.getText());
+                this.aluno.setEndereco(this.campoEnderecoAluno.getText());
+
+                if(!alunoIsValid()){
+                   //TODO exibir mensagem preencher aluno corretamente
+                }else{
+                  if(aluno.salvarAtual()){
+                        //TODO exibir mensagem aluno salvo
+                        this.campoNomeAluno.setText("");
+                        this.campoEnderecoAluno.setText("");
+                        //TODO zerar campo dos cursos escolhidos
+                  }else{
+                        //TODO exibir mensagem aluno nao salvo
+                  }
+                }
+            }
+           
         }
     }
     
     private boolean alunoIsValid(){
-        if(false){
-            return false;
-        }else{
-            this.aluno = new Aluno();
-            //MONTAR ALUNO
+        if(this.aluno != null && this.aluno.getNome() != null && !this.aluno.getNome().isEmpty() && this.aluno.getEndereco() != null && this.aluno.getEndereco().isEmpty()
+                                && this.aluno.getCursando() != null && this.aluno.getCursando().size() != 0){
             return true;
+        }else{
+            return false;
         }
     }
     
     private void gerarCursos(){
+        this.cursosDisponiveis = new Curso().buscarTodos();
+        for(Iterator iterator = this.cursosDisponiveis.iterator(); iterator.hasNext();){
+            Curso curso = (Curso)iterator.next();
+            this.getPanelCheckBoxGroupCursos().add(new JCheckBox(curso.getNomeDoCurso()));
+        }
+        
+        //gambiarra
         this.getPanelCheckBoxGroupCursos().add(new JCheckBox("Arquitetura"));
         this.getPanelCheckBoxGroupCursos().add(new JCheckBox("Ciencias da computacao aaabbbcccvvvaaabbbcccvvv"));
         this.getPanelCheckBoxGroupCursos().add(new JCheckBox("Direito"));
@@ -193,8 +232,6 @@ public class PanelAdicionarAluno extends JPanel implements PadraoPanel,ActionLis
     public void setPanelCheckBoxGroupCursos(JPanel panelCheckBoxGroupCursos) {
         this.panelCheckBoxGroupCursos = panelCheckBoxGroupCursos;
     }
-
-    
 }
 
 

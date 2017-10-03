@@ -1,17 +1,19 @@
 package trabalhojavanp1.telas;
 
-import interfaces.PadraoFrame;
 import interfaces.PadraoPanel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import trabalhojavanp1.objetos.Aluno;
 import trabalhojavanp1.objetos.Disciplina;
 
 
-public class PanelAdicionarDisciplina extends JPanel implements PadraoPanel{
+public class PanelAdicionarDisciplina extends JPanel implements PadraoPanel,ActionListener{
     public static final String PANEL_ADICIONAR_DISCIPLINA = "PanelAdicionarDisciplina";
     //COMPONENTES
     private JLabel labelTitulo,labelNomeDisciplina;
@@ -19,10 +21,13 @@ public class PanelAdicionarDisciplina extends JPanel implements PadraoPanel{
     private JButton botaoSalvar;
     //OBJETOS
     private Disciplina disciplina;
+    //CONTROLES
+    private boolean salvando;
     
     public PanelAdicionarDisciplina(){
-        initViews();
+        initControles();
         initObjects();
+        initViews();
     }
 
     @Override
@@ -48,7 +53,7 @@ public class PanelAdicionarDisciplina extends JPanel implements PadraoPanel{
         this.getBotaoSalvar().setSize(150,40);
         this.getBotaoSalvar().setLocation(220,560);
         this.getBotaoSalvar().setBackground(new Color(150,220,255));
-        //this.getBotaoSalvar().addActionListener(this);
+        this.getBotaoSalvar().addActionListener(this);
         this.getBotaoSalvar().setFont(new Font("Times New Roman", Font.BOLD, 16));
         
         this.add(this.labelTitulo);
@@ -64,15 +69,42 @@ public class PanelAdicionarDisciplina extends JPanel implements PadraoPanel{
         this.disciplina = new Disciplina();
     }
     
-    private boolean disciplinaIsValid(){
-        if(false){
-            return false;
-        }else{
-            this.disciplina = new Disciplina();
-            //MONTAR DIscIPLINA
-            return true;
+    @Override
+    public void initControles() {
+        this.salvando = false;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == this.botaoSalvar){
+            if(!salvando){
+                this.salvando = true;
+                this.disciplina = new Disciplina();
+                this.disciplina.setNomeDisciplina(this.campoNomeDisciplina.getText().toString());
+
+                if(!disciplinaIsValid()){
+                   //TODO exibir mensagem preencher discipliina corretamente
+                }else{
+                  if(disciplina.salvarAtual()){
+                        //TODO exibir mensagem disciplina salvo
+                        this.campoNomeDisciplina.setText("");
+                  }else{
+                        //TODO exibir mensagem disciplina nao salvo
+                  }
+                }
+            }    
         }
     }
+    
+    private boolean disciplinaIsValid(){
+        if(this.disciplina != null && this.disciplina.getNomeDisciplina() != null && !this.disciplina.getNomeDisciplina().isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    
 
     
     //GETTERS SETTERS

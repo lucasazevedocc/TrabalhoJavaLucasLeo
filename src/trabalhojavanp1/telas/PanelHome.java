@@ -25,13 +25,8 @@ public class PanelHome extends JPanel implements PadraoPanel{
     private JLabel labelLeonardo;
     private JLabel labelCurso;
     private JLabel labelMarcos;
-
-
-
-
-
-
     
+
     public PanelHome(){
         initViews();
         initObjects();
@@ -102,6 +97,10 @@ public class PanelHome extends JPanel implements PadraoPanel{
     public void initObjects(){
     }
     
+    @Override
+    public void initControles() {
+        //this.salvando = false;
+    }
     //GETTERS SETTERS
     
 }

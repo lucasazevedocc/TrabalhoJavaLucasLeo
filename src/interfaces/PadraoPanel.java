@@ -12,4 +12,5 @@ package interfaces;
 public interface PadraoPanel {
     abstract void initViews();
     abstract void initObjects();
+    abstract void initControles();
 }

@@ -44,6 +44,10 @@ public class PanelPrincipal extends JPanel implements PadraoPanel{
         this.aluno = new Aluno();
     }
     
+    @Override
+    public void initControles() {
+        //this.salvando = false;
+    }
     
     private boolean alunoIsValid(){
         if(false){

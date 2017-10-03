@@ -216,7 +216,7 @@ public class TelaPrincipal extends JFrame implements PadraoFrame, ActionListener
             exibirPanel(PanelLogin.PANEL_LOGIN);        
         }
         if(ae.getSource() == this.sairFecharAction){
-                
+            System.exit(0);
         }
     }
     

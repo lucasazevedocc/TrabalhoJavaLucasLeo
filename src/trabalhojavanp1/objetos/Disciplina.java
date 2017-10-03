@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhojavanp1.objetos;
 
+import bancoDeDados.dao.DisciplinaDao;
 import java.util.ArrayList;
 import java.util.List;
-
 import interfaces.PadraoDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-
-/**
- *
- * @author Alessandra
- */
 public class Disciplina implements PadraoDAO{
     private int codDisciplina;
     private String nomeDisciplina;
@@ -32,7 +25,8 @@ public class Disciplina implements PadraoDAO{
     
     @Override
     public boolean salvarAtual() {
-        return false;
+        //return new DisciplinaDao().inserirDisciplina(this);
+        return true;
     }
 
     @Override
@@ -88,7 +82,7 @@ public class Disciplina implements PadraoDAO{
     public String getNomeDisciplina(){
         return this.nomeDisciplina;
     } 
-    public void setNome(String nomeDisciplina){
+    public void setNomeDisciplina(String nomeDisciplina){
         this.nomeDisciplina = nomeDisciplina;
     }
 }

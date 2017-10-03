@@ -6,14 +6,12 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import trabalhojavanp1.objetos.Professor;
 
@@ -30,10 +28,13 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel{
     private JRadioButton radioButtonBacharelado,radioButtonMestrado,radioButtonDoutorado;
     //OBJETOS
     private Professor professor;
+    //CONTROLES
+    private boolean salvando;
     
     public PanelAdicionarProfessor(){
-        initViews();
+        initControles();
         initObjects();
+        initViews();
     }
 
     @Override
@@ -114,6 +115,11 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel{
     @Override
     public void initObjects() {
         this.professor = new Professor();
+    }
+    
+    @Override
+    public void initControles() {
+        this.salvando = false;
     }
     
     private boolean professorIsValid(){

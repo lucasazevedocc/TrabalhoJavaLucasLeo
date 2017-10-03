@@ -5,15 +5,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 import trabalhojavanp1.objetos.Disciplina;
 
 public class DisciplinaDao {
 
-	public void inserirDisciplina(Disciplina disc) throws SQLException {
-
-		PreparedStatement query = new ConnectionFactory().getConnection()
+	public void inserirDisciplina(Disciplina disc){
+            
+            try {
+                PreparedStatement query = new ConnectionFactory().getConnection()
 				.prepareStatement("INSERT INTO disciplinas(id, nome) VALUES(?, ?)", Statement.RETURN_GENERATED_KEYS);
 
 		query.setInt(1, disc.getCodDisciplina());
@@ -26,6 +29,11 @@ public class DisciplinaDao {
 		System.out.println("disciplina inserida com sucesso");
 
 		query.close();
+            } catch (SQLException ex) {
+                //return false;
+            }
+
+		
 	}
 
 	public void deletarDisciplina(Disciplina disc) throws SQLException {
@@ -65,7 +73,7 @@ public class DisciplinaDao {
 		while (resposta.next()) {
 			Disciplina a = new Disciplina();
 			a.setCodDisciplina(resposta.getInt(1));
-			a.setNome(resposta.getString(2));
+			a.setNomeDisciplina(resposta.getString(2));
 
 			listaDisciplinas.add(a);
 		}
