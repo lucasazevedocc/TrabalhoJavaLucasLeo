@@ -57,7 +57,7 @@ public class DisciplinaProfessorDao {
 		while (resposta.next()) {
 			Disciplina d = new Disciplina();
 			d.setCodDisciplina(resposta.getInt(1));
-			d.setNome(resposta.getString(2));
+			d.setNomeDisciplina(resposta.getString(2));
 			listaDisciplinas.add(d);
 		}
 
