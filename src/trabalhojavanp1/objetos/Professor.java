@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import dao.ProfessorDao;
+
 public class Professor implements PadraoDAO{
     private int registro;
     private String nome;
@@ -28,7 +30,7 @@ public class Professor implements PadraoDAO{
     
     @Override
     public boolean  salvarAtual() {
-        return false;
+        return new ProfessorDao().inserirProfessor(this);
     }
 
     @Override
@@ -38,24 +40,22 @@ public class Professor implements PadraoDAO{
 
     @Override
     public boolean deletarAtual() {
-        return false;
+        return new ProfessorDao().deletarProfessor(this);
     }
 
     @Override
     public boolean deletarByKey(int key) {
-        return false;
+        return new ProfessorDao().deletarProfessorProId(key);
     }
 
     @Override
     public Object buscarByKey(int key) {
-        Professor professor = new Professor();
-        return professor;  
+        return new ProfessorDao().mostrarProfessorPorId(key);  
     }
 
     @Override
     public List<Object> buscarTodos() {
-        List<Object> list = new ArrayList<Object>();
-        return list;
+        return new ProfessorDao().mostraProfessores();
     }
     
      public String gerarString(){

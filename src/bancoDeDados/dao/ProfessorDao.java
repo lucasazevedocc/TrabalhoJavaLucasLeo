@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.List;
 
 import trabalhojavanp1.objetos.Professor;
 
@@ -82,25 +82,70 @@ public class ProfessorDao {
 		
 	}
 
-	public ArrayList<Professor> mostraProfessores() throws SQLException {
+	public List<Object> mostraProfessores(){
 
-		ArrayList<Professor> listaProfessores = new ArrayList<Professor>();
+		
+		try {
+			ArrayList<Object> listaProfessores = new ArrayList<Object>();
 
-		PreparedStatement query = new ConnectionFactory().getConnection().prepareStatement("SELECT * FROM professores");
+			PreparedStatement query = new ConnectionFactory().getConnection().prepareStatement("SELECT * FROM professores");
+			
+			ResultSet resposta = query.executeQuery();
+			
+			while (resposta.next()) {
+				Professor a = new Professor();
+				a.setRegistro(resposta.getInt(1));
+				a.setNome(resposta.getString(2));
+				a.setFormacao(resposta.getString(3));
 
-		ResultSet resposta = query.executeQuery();
+				listaProfessores.add(a);
+			}
 
-		while (resposta.next()) {
-			Professor a = new Professor();
-			a.setRegistro(resposta.getInt(1));
-			a.setNome(resposta.getString(2));
-			a.setFormacao(resposta.getString(3));
+			query.close();
 
-			listaProfessores.add(a);
+			return listaProfessores;
+		} catch (SQLException e) {
+			return null;
 		}
 
-		query.close();
+		
+	}
 
-		return listaProfessores;
+	public boolean deletarProfessorProId(int id) {
+		
+		try {
+			new CursoDisciplinaProfessorDao().deletaProfessorPorId(id);
+			
+			new DisciplinaProfessorDao().deletaProfessorPorId(id);
+
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM professores WHERE id = ?");
+
+			query.setInt(1, id);
+
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+	}
+
+	public Object mostrarProfessorPorId(int id) {
+		
+		try {
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("SELECT * FROM professores WHERE id = ?");
+
+			query.setInt(1, id);
+
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
 	}
 }

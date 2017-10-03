@@ -3,6 +3,8 @@ package trabalhojavanp1.objetos;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import dao.CursoDao;
 import interfaces.PadraoDAO;
 
 public class Curso implements PadraoDAO{
@@ -23,7 +25,7 @@ public class Curso implements PadraoDAO{
    
     @Override
     public boolean salvarAtual() {
-        return false;
+        return new CursoDao().inserirCurso(this);
     }
 
     @Override
@@ -33,24 +35,22 @@ public class Curso implements PadraoDAO{
 
     @Override
     public boolean deletarAtual() {
-        return false;
+        return new CursoDao().deletarCurso(this);
     }
 
     @Override
     public boolean deletarByKey(int key) {
-        return false;
+        return new CursoDao().deletarCursoProId(key);
     }
 
     @Override
     public Object buscarByKey(int key) {
-        Curso curso = new Curso();
-        return curso;
+        return new CursoDao().mostrarPorId(key);
     }
 
     @Override
     public List<Object> buscarTodos() {
-        List<Object> list = new ArrayList<Object>();
-        return list;    
+        return new CursoDao().mostraCursos();   
     }
     
      public String gerarString(){

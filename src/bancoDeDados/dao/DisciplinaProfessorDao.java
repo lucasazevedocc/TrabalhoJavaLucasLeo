@@ -89,4 +89,39 @@ public class DisciplinaProfessorDao {
 
 		return listaProfessores;
 	}
+
+	public boolean deletaDisciplinaProId(int id) {
+
+		try {
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM disciplina_professor WHERE id_disciplina = ?");
+			
+			query.setInt(1, id);
+			
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}	
+	}
+
+	public boolean deletaProfessorPorId(int id) {
+		
+		try {
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM disciplina_professor WHERE id_professor = ?");
+			
+			query.setInt(1, id);
+			
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}	
+		
+	}
 }

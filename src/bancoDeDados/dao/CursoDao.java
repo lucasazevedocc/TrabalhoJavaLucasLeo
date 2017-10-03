@@ -82,24 +82,79 @@ public class CursoDao {
 		
 	}
 
-	public ArrayList<Curso> mostraCursos() throws SQLException {
+	public ArrayList<Object> mostraCursos() {
 
-		ArrayList<Curso> listaCursos = new ArrayList<Curso>();
+		
+		try {
+			ArrayList<Object> listaCursos = new ArrayList<Object>();
+			
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("SELECT * FROM cursos");
+			
+			ResultSet resposta = query.executeQuery();
 
-		PreparedStatement query = new ConnectionFactory().getConnection()
-				.prepareStatement("SELECT * FROM cursos");
+			while (resposta.next()) {
+				Curso a = new Curso();
+				a.setCodCurso(resposta.getInt(1));
+				a.setNomeDoCurso(resposta.getString(2));
+				listaCursos.add(a);
+			}
 
-		ResultSet resposta = query.executeQuery();
+			query.close();
 
-		while (resposta.next()) {
-			Curso a = new Curso();
-			a.setCodCurso(resposta.getInt(1));
-			a.setNomeDoCurso(resposta.getString(2));
-			listaCursos.add(a);
+			return listaCursos;
+		} catch (SQLException e) {
+			return null;
 		}
 
-		query.close();
+		
+	}
 
-		return listaCursos;
+	public boolean deletarCursoProId(int id) {
+		
+		try {
+			new AlunoCursoDao().deletaCursoPorId(id);
+			
+			new CursoDisciplinaProfessorDao().deletaCursoProId(id);
+
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM cursos WHERE id = ?");
+
+			query.setInt(1, id);
+
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+	}
+
+	public Object mostrarPorId(int id) {
+		
+		try {
+			
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("SELECT * FROM cursos WHERE id = ?");
+			
+			query.setInt(1, id);
+			
+			ResultSet resposta = query.executeQuery();
+
+			Curso a = new Curso();
+			
+			while (resposta.next()) {
+				
+				a.setCodCurso(resposta.getInt(1));
+				a.setNomeDoCurso(resposta.getString(2));
+			}
+
+			query.close();
+
+			return a;
+		} catch (SQLException e) {
+			return null;
+		}
 	}
 }

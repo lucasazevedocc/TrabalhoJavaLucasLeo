@@ -90,4 +90,41 @@ public class AlunoCursoDao {
 		return listaCursos;
 	}
 
+	public boolean deletaAlunoPorId(int id) {	
+		
+		try {
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM aluno_curso WHERE id_aluno = ?");
+			
+			query.setInt(1, id);
+			
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+
+		
+		
+	}
+
+	public boolean deletaCursoPorId(int id) {
+		try {
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM aluno_curso WHERE id_curso = ?");
+			
+			query.setInt(1, id);
+			
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+		
+	}
+
 }

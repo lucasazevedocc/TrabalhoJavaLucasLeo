@@ -8,6 +8,7 @@ package trabalhojavanp1.objetos;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.DisciplinaDao;
 import interfaces.PadraoDAO;
 
 
@@ -32,7 +33,7 @@ public class Disciplina implements PadraoDAO{
     
     @Override
     public boolean salvarAtual() {
-        return false;
+        return new DisciplinaDao().inserirDisciplina(this);
     }
 
     @Override
@@ -42,24 +43,22 @@ public class Disciplina implements PadraoDAO{
 
     @Override
     public boolean deletarAtual() {
-        return false;
+        return new DisciplinaDao().deletarDisciplina(this);
     }
 
     @Override
     public boolean deletarByKey(int key) {
-        return false;
+        return new DisciplinaDao().deletarDisciplinaPorId(key);
     }
 
     @Override
     public Object buscarByKey(int key) {
-        Disciplina disciplina = new Disciplina();
-        return disciplina;
+        return new DisciplinaDao().mostrarPorId(key);
     }
 
     @Override
     public List<Object> buscarTodos() {
-        List<Object> list = new ArrayList<Object>();
-        return list;    
+        return new DisciplinaDao().mostraDisciplinas();    
     }
     
      public String gerarString(){

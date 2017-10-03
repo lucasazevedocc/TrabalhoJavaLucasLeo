@@ -56,4 +56,56 @@ public class CursoDisciplinaProfessorDao {
 		query.execute();
 		query.close();
 	}
+
+	public boolean deletaCursoProId(int id) {
+
+		try {
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM curso_disciplina_professor WHERE id_curso = ?");
+			
+			query.setInt(1, id);
+
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}	
+	}
+
+	public boolean deletaDisciplinaPorId(int id) {
+
+		try {
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM curso_disciplina_professor WHERE id_disciplina = ?");
+			
+			query.setInt(1, id);
+
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+	}
+
+	public boolean deletaProfessorPorId(int id) {
+		
+		try {
+			PreparedStatement query = new ConnectionFactory().getConnection()
+					.prepareStatement("DELETE FROM curso_disciplina_professor WHERE id_professor = ?");
+			
+			query.setInt(1, id);
+
+			query.execute();
+			query.close();
+			
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+		
+	}
 }
