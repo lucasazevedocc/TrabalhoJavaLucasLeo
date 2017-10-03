@@ -1,45 +1,111 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhojavanp1.telas;
 
 import interfaces.PadraoFrame;
 import interfaces.PadraoPanel;
 import java.awt.Font;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import trabalhojavanp1.objetos.Aluno;
+import trabalhojavanp1.objetos.Curso;
 
-/**
- *
- * @author Alessandra
- */
 public class PanelMostrarCursos extends JPanel implements PadraoPanel{
     public static final String PANEL_MOSTRAR_CURSOS = "PanelMostrarCursos";        
-    private JLabel labelTeste;
+    //COMPONENTES
+    private JLabel labelTitulo,labelCursosDaFaculdade;
+    private JTextArea textAreaCursosExistentes;
+    //OBJECTS
+    private List<Object> cursos;
     
     public PanelMostrarCursos(){
-        initViews();
         initObjects();
+        initViews();
     }
 
     @Override
     public void initViews() {
         this.setLayout(null);
 
-        this.labelTeste = new JLabel("PanelMostrarCursos");
-        this.labelTeste.setLocation(50,50);
-        this.labelTeste.setSize(200,60);
-        this.labelTeste.setFont(new Font("Serif", Font.BOLD, 24));
+        this.setLabelTitulo(new JLabel("MOSTRAR CURSOS"));
+        this.getLabelTitulo().setLocation(230,0);
+        this.getLabelTitulo().setSize(200,30);
+        this.getLabelTitulo().setFont(new Font("Serif", Font.BOLD, 14));
         
-        this.add(this.labelTeste);
+        this.setLabelCursosDaFaculdade(new JLabel("Abaixo todos os cursos da faculdade: "));
+        this.getLabelCursosDaFaculdade().setLocation(180,170);
+        this.getLabelCursosDaFaculdade().setSize(230,30);
+        this.getLabelCursosDaFaculdade().setFont(new Font("Serif", Font.BOLD, 14));
+         
+        this.setTextAreaCursosExistentes(new JTextArea(""));
+        this.getTextAreaCursosExistentes().setLocation(50,210);
+        this.getTextAreaCursosExistentes().setSize(500,400);
+        this.getTextAreaCursosExistentes().setFont(new Font("Serif", Font.BOLD, 14));
+        inserirCursosNoTextArea();     
+       
+        this.add(getLabelTitulo());
+        this.add(getLabelCursosDaFaculdade());
+        this.add(getLabelCursosDaFaculdade());
+        this.add(getTextAreaCursosExistentes());
+        
         this.setVisible(true);
     }
 
     @Override
     public void initObjects() {
+        this.setCursos(new Curso().buscarTodos());
+
     }
     
+     private void inserirCursosNoTextArea(){
+        if(this.getCursos().size() == 0){
+           this.getTextAreaCursosExistentes().setText("\n\n\n\n\n\n\n\n\n\n                                         Não ha cursos cadastrados.");
+        }else{
+            String string = "";
+
+            for(Iterator iterator = this.getCursos().iterator(); iterator.hasNext();){
+                Curso curso = (Curso)iterator.next();
+                string += curso.gerarString();
+                string += "\n\n";
+            }
+
+            this.getTextAreaCursosExistentes().setText(string);
+        }
+    }
+    
+    public void atualizarTextArea(){
+        initObjects();
+        inserirCursosNoTextArea();
+    }
+    
+    //GETTERS SETTERS
+    public JLabel getLabelTitulo() {
+        return labelTitulo;
+    }
+    public void setLabelTitulo(JLabel labelTitulo) {
+        this.labelTitulo = labelTitulo;
+    }
+    
+    public JLabel getLabelCursosDaFaculdade() {
+        return labelCursosDaFaculdade;
+    }
+    public void setLabelCursosDaFaculdade(JLabel labelCursosDaFaculdade) {
+        this.labelCursosDaFaculdade = labelCursosDaFaculdade;
+    }
+
+    public List<Object> getCursos() {
+        return cursos;
+    }
+    public void setCursos(List<Object> cursos) {
+        this.cursos = cursos;
+    }
+    
+    public JTextArea getTextAreaCursosExistentes() {
+        return textAreaCursosExistentes;
+    }
+    public void setTextAreaCursosExistentes(JTextArea textAreaCursosExistentes) {
+        this.textAreaCursosExistentes = textAreaCursosExistentes;
+    }
 }

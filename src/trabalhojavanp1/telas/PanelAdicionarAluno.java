@@ -1,23 +1,21 @@
-
 package trabalhojavanp1.telas;
 
 import interfaces.PadraoPanel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import trabalhojavanp1.objetos.Aluno;
 
 
 //TODO verificar se ja existe cursos adicionados antes de liberar a adicao dos alunos
-public class PanelAdicionarAluno extends JPanel implements PadraoPanel{
+public class PanelAdicionarAluno extends JPanel implements PadraoPanel,ActionListener{
     public static final String PANEL_ADICIONAR_ALUNO = "PanelAdicionarAluno";
     //COMPONENTES
     private JTextField campoNomeAluno,campoEnderecoAluno;
@@ -103,11 +101,18 @@ public class PanelAdicionarAluno extends JPanel implements PadraoPanel{
         this.add(this.labelTeste);*/
         this.setVisible(true);
     } 
+    
     @Override
     public void initObjects(){
         this.aluno = new Aluno();
     }
     
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == this.botaoSalvar){
+           // exibirPanel(PanelAdicionarAluno.PANEL_ADICIONAR_ALUNO);
+        }
+    }
     
     private boolean alunoIsValid(){
         if(false){
@@ -188,6 +193,8 @@ public class PanelAdicionarAluno extends JPanel implements PadraoPanel{
     public void setPanelCheckBoxGroupCursos(JPanel panelCheckBoxGroupCursos) {
         this.panelCheckBoxGroupCursos = panelCheckBoxGroupCursos;
     }
+
+    
 }
 
 

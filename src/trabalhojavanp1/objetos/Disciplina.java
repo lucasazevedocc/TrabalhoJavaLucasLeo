@@ -31,19 +31,23 @@ public class Disciplina implements PadraoDAO{
     
     
     @Override
-    public void salvarAtual() {
+    public boolean salvarAtual() {
+        return false;
     }
 
     @Override
-    public void atualizarAtual() {
+    public boolean atualizarAtual() {
+        return false;
     }
 
     @Override
-    public void deletarAtual() {
+    public boolean deletarAtual() {
+        return false;
     }
 
     @Override
-    public void deletarByKey(int key) {
+    public boolean deletarByKey(int key) {
+        return false;
     }
 
     @Override
@@ -56,6 +60,21 @@ public class Disciplina implements PadraoDAO{
     public List<Object> buscarTodos() {
         List<Object> list = new ArrayList<Object>();
         return list;    
+    }
+    
+     public String gerarString(){
+        String string = "teste";
+        /*if( this.matricula != 0){
+            string += ("Matricula: "+this.matricula+"\n");
+        }
+        if( this.nome != null && !this.nome.isEmpty()){
+            string += ("Nome: "+this.nome+"\n");
+        }
+        if( this.endereco != null && !this.endereco.isEmpty()){
+            string += ("Endereco: "+this.endereco+"\n");
+        }*/
+        
+        return string;
     }
     
     //GETTERS SETTERS

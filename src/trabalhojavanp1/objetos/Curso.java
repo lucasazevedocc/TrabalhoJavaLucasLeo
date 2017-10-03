@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhojavanp1.objetos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import interfaces.PadraoDAO;
 
-/**
- *
- * @author Alessandra
- */
 public class Curso implements PadraoDAO{
     private int codCurso;
     private String nomeDoCurso;
@@ -30,23 +20,25 @@ public class Curso implements PadraoDAO{
         this.nomeDoCurso = nomeDoCurso;
         this.materias = materias;
     }
-    
-    
-    
+   
     @Override
-    public void salvarAtual() {
+    public boolean salvarAtual() {
+        return false;
     }
 
     @Override
-    public void atualizarAtual() {
+    public boolean atualizarAtual() {
+        return false;
     }
 
     @Override
-    public void deletarAtual() {
+    public boolean deletarAtual() {
+        return false;
     }
 
     @Override
-    public void deletarByKey(int key) {
+    public boolean deletarByKey(int key) {
+        return false;
     }
 
     @Override
@@ -61,6 +53,20 @@ public class Curso implements PadraoDAO{
         return list;    
     }
     
+     public String gerarString(){
+        String string = "teste";
+        /*if( this.matricula != 0){
+            string += ("Matricula: "+this.matricula+"\n");
+        }
+        if( this.nome != null && !this.nome.isEmpty()){
+            string += ("Nome: "+this.nome+"\n");
+        }
+        if( this.endereco != null && !this.endereco.isEmpty()){
+            string += ("Endereco: "+this.endereco+"\n");
+        }*/
+        
+        return string;
+    }
     
     //GETTERS SETTERS
     public int getCodCurso(){
