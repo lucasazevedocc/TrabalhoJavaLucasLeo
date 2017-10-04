@@ -92,6 +92,9 @@ public class Aluno implements PadraoDAO{
     }
     
     public HashMap<Integer,Curso> getCursando(){
+        if(this.cursando == null){
+            this.cursando = new HashMap<Integer,Curso>();
+        }
         return this.cursando;
     } 
     public void setMatricula(HashMap<Integer,Curso> cursando){

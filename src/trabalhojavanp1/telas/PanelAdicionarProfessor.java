@@ -6,8 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.BoxLayout;
@@ -20,8 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import trabalhojavanp1.objetos.Aluno;
 import trabalhojavanp1.objetos.Disciplina;
-import trabalhojavanp1.objetos.Materia;
 import trabalhojavanp1.objetos.Professor;
 
 //TODO verificar se ja existe disciplinas adicionados antes de liberar a adicao dos professores
@@ -45,6 +43,8 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel,Actio
     public PanelAdicionarProfessor(){
         initControles();
         initViews();
+        initObjects();
+        gerarDisciplinas();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel,Actio
         this.labelTitulo.setSize(170,30);
         this.labelTitulo.setFont(new Font("Serif", Font.BOLD, 14));
         
-        this.labelNaoHaDisciplinas = new JLabel("Carregando...");
+        this.labelNaoHaDisciplinas = new JLabel("           Carregando...");
         this.labelNaoHaDisciplinas.setLocation(185,260);
         this.labelNaoHaDisciplinas.setSize(235,30);
         this.labelNaoHaDisciplinas.setFont(new Font("Serif", Font.BOLD, 14));
@@ -93,8 +93,26 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel,Actio
         this.getPanelButtonGroupFormacao().setVisible(true);
         this.setButtonGroupFormacaoProfessor(new ButtonGroup());
         this.setRadioButtonBacharelado(new JRadioButton("Bacharelado",true));
+        this.getRadioButtonBacharelado().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                professor.setFormacao(((JRadioButton)ae.getSource()).getText());
+            }
+        });
         this.setRadioButtonDoutorado(new JRadioButton("Doutorado",false));
+        this.getRadioButtonDoutorado().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                professor.setFormacao(((JRadioButton)ae.getSource()).getText());
+            }
+        });
         this.setRadioButtonMestrado(new JRadioButton("Mestrado",false));
+        this.getRadioButtonMestrado().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                professor.setFormacao(((JRadioButton)ae.getSource()).getText());
+            }
+        });
         this.getButtonGroupFormacaoProfessor().add(this.getRadioButtonBacharelado());
         this.getButtonGroupFormacaoProfessor().add(this.getRadioButtonMestrado());
         this.getButtonGroupFormacaoProfessor().add(this.getRadioButtonDoutorado());
@@ -119,8 +137,6 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel,Actio
         this.add(this.getCampoNomeProfessor());
         this.add(this.getPanelButtonGroupFormacao());
         this.add(this.getBotaoSalvar());
-
-        gerarDisciplinas();
         
         this.setVisible(true);
     }
@@ -128,6 +144,7 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel,Actio
     @Override
     public void initObjects() {
         this.professor = new Professor();
+        this.professor.setFormacao(this.getRadioButtonBacharelado().getText());
         this.disciplinas =  new Disciplina().buscarTodos();
         
         //GABIARRA
@@ -153,32 +170,37 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel,Actio
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(!salvando){
-            this.salvando = true;
-            if(!professorIsValid()){
-               //TODO exibir mensagem preencher curso corretamente
-            }else{
-              if(professor.salvarAtual()){
-                    //TODO
-              }else{
-                  //TODO
-              }
+                this.salvando = true;
+                this.professor.setNome(this.campoNomeProfessor.getText());
+                if(!professorIsValid()){
+                    JOptionPane.showMessageDialog(null,"Preencha os dados do professor corretamente.");
+                }else{
+                  if(professor.salvarAtual()){
+                        JOptionPane.showMessageDialog(null,"Professor salvo.");
+                        this.campoNomeProfessor.setText("");
+                        this.getRadioButtonBacharelado().setSelected(true);
+                        this.professor = new Professor();
+                        this.professor.setFormacao(this.getRadioButtonBacharelado().getText());
+                        gerarDisciplinas();
+                  }else{
+                        JOptionPane.showMessageDialog(null,"Professor nao foi salvo.");
+                  }
+                }
+                this.salvando = false;
             }
-            this.salvando = false;
-        }
     }
     
     private boolean professorIsValid(){
-        if(false){
-            return false;
-        }else{
-            this.professor = new Professor();
-            //MONTAR PROFESSOR
+        if(this.professor != null && this.professor.getNome() != null && !this.professor.getNome().isEmpty() && this.professor.getFormacao() != null && !this.professor.getFormacao().isEmpty()
+                                && this.professor.getDisciplinas() != null && this.professor.getDisciplinas().size() != 0){
             return true;
+        }else{
+            return false;
         }
     }
     
     public void gerarDisciplinas(){
-        liberarFormulario(false,"Carregando...");
+        liberarFormulario(false,"           Carregando...");
 
         if(getPanelCheckBoxGroupDisciplinas() == null){
             this.setPanelCheckBoxGroupDisciplinas(new JPanel());
@@ -194,9 +216,7 @@ public class PanelAdicionarProfessor extends JPanel implements PadraoPanel,Actio
             this.getPanelCheckBoxGroupDisciplinas().setLocation(110,300);
             this.getPanelCheckBoxGroupDisciplinas().setVisible(false);
         }
-        
-        initObjects();
-        
+                
         if(this.disciplinas == null || this.disciplinas.size() == 0){
             liberarFormulario(false,"Cadastre as disciplinas primeiro.");
         }else{

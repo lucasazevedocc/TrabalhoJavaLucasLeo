@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import trabalhojavanp1.objetos.Curso;
 import trabalhojavanp1.objetos.Disciplina;
@@ -46,6 +45,8 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel,ActionLis
     public PanelAdicionarCurso(){
         initControles();
         initViews();
+        initObjects();
+        gerarDisciplinas();
     }
 
     @Override
@@ -69,7 +70,7 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel,ActionLis
         this.labelDisciplinasCurso.setFont(new Font("Serif", Font.BOLD, 14));
         this.labelDisciplinasCurso.setVisible(false);
 
-        this.labelNaoHaDisciplinas = new JLabel("Carregando...");
+        this.labelNaoHaDisciplinas = new JLabel("           Carregando...");
         this.labelNaoHaDisciplinas.setLocation(185,260);
         this.labelNaoHaDisciplinas.setSize(235,30);
         this.labelNaoHaDisciplinas.setFont(new Font("Serif", Font.BOLD, 14));
@@ -95,8 +96,6 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel,ActionLis
         this.add(this.labelNaoHaDisciplinas);
         this.add(this.getCampoNomeCurso());
         this.add(this.getBotaoSalvar());
-
-        gerarDisciplinas();
 
         this.setVisible(true);
     }
@@ -176,34 +175,25 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel,ActionLis
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == this.botaoSalvar){
-           /*if(!salvando){
+           if(!salvando){
                 this.salvando = true;
                 this.curso.setNomeDoCurso(this.campoNomeCurso.getText().toString());
                 //this.curso.setMaterias(materias);
 
                 if(!cursoIsValid()){
-                   //TODO exibir mensagem preencher curso corretamente
+                    JOptionPane.showMessageDialog(null,"Preencha os dados do professor corretamente.");
                 }else{
-                  if(curso.salvarAtual()){
-                        //TODO exibir mensagem disciplina salvo
+                  if(curso.salvarAtual() || true){
+                        JOptionPane.showMessageDialog(null,"Curso salvo.");
                         this.campoNomeCurso.setText("");
+                        this.curso = new Curso();
                         gerarDisciplinas();
-                        this.salvando = false;
                   }else{
-                        //TODO exibir mensagem disciplina nao salvo
-                        this.salvando = false;
+                        JOptionPane.showMessageDialog(null,"Curso nao foi salvo.");
                   }
                 }
-            }*/
-           if(this.curso.getMaterias() != null && this.curso.getMaterias().size() != 0){
-               for(Iterator it = this.curso.getMaterias().iterator();it.hasNext();){
-                   Materia materia = (Materia)it.next();
-                   System.out.println(materia.gerarString()+"\n\n");
-               }
-           }else{
-                System.out.println("nao existe materia");
-
-           }
+                this.salvando = false;
+            }
         }
     }
     
@@ -213,24 +203,24 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel,ActionLis
     }
     
     private void gerarDisciplinas(){
-        liberarFormulario(false,"Carregando...");
+        liberarFormulario(false,"           Carregando...");
+        this.hMTextObject = new HashMap<String,Object>();
+
         if(getPanelCheckBoxGroupDisciplinas() == null){
             this.setPanelCheckBoxGroupDisciplinas(new JPanel());
             this.getPanelCheckBoxGroupDisciplinas().setLayout(new BoxLayout(getPanelCheckBoxGroupDisciplinas(),BoxLayout.Y_AXIS));
-            this.getPanelCheckBoxGroupDisciplinas().setSize(350,400);
-            this.getPanelCheckBoxGroupDisciplinas().setLocation(120,265);
+            this.getPanelCheckBoxGroupDisciplinas().setSize(370,400);
+            this.getPanelCheckBoxGroupDisciplinas().setLocation(110,265);
             this.getPanelCheckBoxGroupDisciplinas().setVisible(false);
         }else{
             this.remove(getPanelCheckBoxGroupDisciplinas());
             this.setPanelCheckBoxGroupDisciplinas(new JPanel());
             this.getPanelCheckBoxGroupDisciplinas().setLayout(new BoxLayout(getPanelCheckBoxGroupDisciplinas(),BoxLayout.Y_AXIS));
-            this.getPanelCheckBoxGroupDisciplinas().setSize(350,400);
-            this.getPanelCheckBoxGroupDisciplinas().setLocation(120,265);
+            this.getPanelCheckBoxGroupDisciplinas().setSize(370,400);
+            this.getPanelCheckBoxGroupDisciplinas().setLocation(110,265);
             this.getPanelCheckBoxGroupDisciplinas().setVisible(false);
         }
-        
-        initObjects();
-         
+                 
         if(this.disciplinas == null || this.disciplinas.size() == 0){
             liberarFormulario(false,"Cadastre as disciplinas primeiro.");
         }else{
