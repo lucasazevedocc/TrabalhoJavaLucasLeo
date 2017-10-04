@@ -30,8 +30,7 @@ public class Materia implements PadraoDAO{
         this.disciplina = disciplina;
         this.professor = professor;
     }
-    
-    
+   
     //CONEXAO BD
     @Override
     public boolean salvarAtual() {
@@ -65,6 +64,25 @@ public class Materia implements PadraoDAO{
         return list;    
     }
 
+    public String gerarString(){
+        String string = "";
+        if(this.codMateria != 0){
+            string += ("codMateria -> "+this.codMateria+"\n");
+        }
+        if(this.disciplina != null && this.disciplina.getCodDisciplina() != 0){
+            string += ("codDisciplina -> "+this.disciplina.getCodDisciplina()+"\n");
+        }
+        if(this.disciplina != null && this.disciplina.getNomeDisciplina() != null && !this.disciplina.getNomeDisciplina().isEmpty()){
+            string += ("nomeDisciplina -> "+this.disciplina.getNomeDisciplina()+"\n");
+        } 
+        if(this.professor != null && this.professor.getRegistro() != 0){
+            string += ("registroProfessor -> "+this.professor.getRegistro()+"\n");
+        }
+        if(this.professor != null && this.professor.getNome() != null && !this.professor.getNome().isEmpty()){
+            string += ("nomeProfessor -> "+this.professor.getNome()+"\n");
+        }  
+        return string;
+    }
     
     //GETTERS SETTERS
     public Disciplina getDisciplina(){

@@ -88,8 +88,10 @@ public class PanelAdicionarDisciplina extends JPanel implements PadraoPanel,Acti
                   if(disciplina.salvarAtual()){
                         //TODO exibir mensagem disciplina salvo
                         this.campoNomeDisciplina.setText("");
+                        this.salvando = false;
                   }else{
                         //TODO exibir mensagem disciplina nao salvo
+                        this.salvando = false;
                   }
                 }
             }    

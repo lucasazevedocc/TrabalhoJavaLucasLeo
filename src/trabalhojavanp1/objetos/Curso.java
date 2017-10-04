@@ -8,14 +8,13 @@ import interfaces.PadraoDAO;
 public class Curso implements PadraoDAO{
     private int codCurso;
     private String nomeDoCurso;
-    private HashMap<Integer,Materia> materias;
+    private List<Materia> materias;
     
     
     public Curso(){
-        
     }
     
-    public Curso(int codCurso, String nomeDoCurso, HashMap<Integer,Materia> materias){
+    public Curso(int codCurso, String nomeDoCurso, List<Materia> materias){
         this.codCurso = codCurso;
         this.nomeDoCurso = nomeDoCurso;
         this.materias = materias;
@@ -83,10 +82,13 @@ public class Curso implements PadraoDAO{
         this.nomeDoCurso = nomeDoCurso;
     }
     
-    public HashMap<Integer,Materia> getMaterias(){
+    public List<Materia> getMaterias(){
+        if(this.materias == null){
+            this.materias = new ArrayList<Materia>();
+        }
         return this.materias;
     } 
-    public void setMaterias(HashMap<Integer,Materia> materias){
+    public void setMaterias(List<Materia> materias){
         this.materias = materias;
     }
 

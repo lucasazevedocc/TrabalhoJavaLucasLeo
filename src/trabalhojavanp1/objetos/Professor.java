@@ -104,6 +104,9 @@ public class Professor implements PadraoDAO{
     }
 
     public HashMap<Integer,Disciplina> getDisciplinas(){
+        if(this.disciplinas == null){
+            this.disciplinas = new HashMap<Integer,Disciplina>();
+        }
         return this.disciplinas;
     } 
     public void setDisciplinas(HashMap<Integer,Disciplina> disciplinas){
