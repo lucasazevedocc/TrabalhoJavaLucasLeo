@@ -7,9 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import trabalhojavanp1.objetos.Aluno;
 import trabalhojavanp1.objetos.Disciplina;
 
 
@@ -83,17 +83,16 @@ public class PanelAdicionarDisciplina extends JPanel implements PadraoPanel,Acti
                 this.disciplina.setNomeDisciplina(this.campoNomeDisciplina.getText().toString());
 
                 if(!disciplinaIsValid()){
-                   //TODO exibir mensagem preencher discipliina corretamente
+                   JOptionPane.showMessageDialog(null,"Preencha os dados da disciplina corretamente.");
                 }else{
                   if(disciplina.salvarAtual()){
-                        //TODO exibir mensagem disciplina salvo
+                        JOptionPane.showMessageDialog(null,"Disciplina salva.");
                         this.campoNomeDisciplina.setText("");
-                        this.salvando = false;
                   }else{
-                        //TODO exibir mensagem disciplina nao salvo
-                        this.salvando = false;
+                        JOptionPane.showMessageDialog(null,"Disciplina nao foi salva.");
                   }
                 }
+                this.salvando = false;
             }    
         }
     }

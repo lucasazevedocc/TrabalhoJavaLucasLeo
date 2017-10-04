@@ -109,7 +109,7 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel,ActionLis
 
 
         //GABIARRA
-        Disciplina dis1 = new Disciplina(1,"Matematica");
+        /*Disciplina dis1 = new Disciplina(1,"Matematica");
         this.disciplinas.add(dis1);
         Disciplina dis2 = new Disciplina(2,"Engenharia de Software");
         this.disciplinas.add(dis2);
@@ -164,7 +164,7 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel,ActionLis
         ds.put(dis3.getCodDisciplina(),dis3);
         ds.put(dis4.getCodDisciplina(),dis4);
         prof5.setDisciplinas(ds);
-        this.professores.add(prof5);
+        this.professores.add(prof5);*/
     }
     
     @Override

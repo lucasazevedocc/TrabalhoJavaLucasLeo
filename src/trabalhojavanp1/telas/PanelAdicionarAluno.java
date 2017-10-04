@@ -111,7 +111,7 @@ public class PanelAdicionarAluno extends JPanel implements PadraoPanel,ActionLis
         this.cursosDisponiveis = new ArrayList<Object>();
         
         //GAMBIARRA
-        Curso curso1 = new Curso();
+        /*Curso curso1 = new Curso();
         curso1.setCodCurso(1);
         curso1.setNomeDoCurso("Engenharia Civil");
         Curso curso2 = new Curso();
@@ -135,7 +135,7 @@ public class PanelAdicionarAluno extends JPanel implements PadraoPanel,ActionLis
         cursosDisponiveis.add(curso2);
         cursosDisponiveis.add(curso3);
         cursosDisponiveis.add(curso4);
-        cursosDisponiveis.add(curso5);
+        cursosDisponiveis.add(curso5);*/
 
     }
     
