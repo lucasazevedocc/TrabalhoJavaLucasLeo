@@ -108,7 +108,7 @@ public class PanelAdicionarAluno extends JPanel implements PadraoPanel,ActionLis
     @Override
     public void initObjects(){
         this.aluno = new Aluno();
-        this.cursosDisponiveis = new ArrayList<Object>();
+        this.cursosDisponiveis = new Curso().buscarTodos();
         
         //GAMBIARRA
         /*Curso curso1 = new Curso();

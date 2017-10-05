@@ -59,16 +59,35 @@ public class Professor implements PadraoDAO{
     }
     
      public String gerarString(){
-        String string = "teste";
-        /*if( this.matricula != 0){
-            string += ("Matricula: "+this.matricula+"\n");
+        String string = "";
+        if( this.registro != 0){
+            string += ("Registro: "+this.registro+"\n");
         }
         if( this.nome != null && !this.nome.isEmpty()){
             string += ("Nome: "+this.nome+"\n");
         }
-        if( this.endereco != null && !this.endereco.isEmpty()){
-            string += ("Endereco: "+this.endereco+"\n");
-        }*/
+        if( this.formacao != null && !this.formacao.isEmpty()){
+            string += ("Formacao: "+this.formacao+"\n");
+        }
+        if(this.disciplinas != null && this.disciplinas.size() != 0){
+            string += ("Disciplinas:");
+            for(int key : this.disciplinas.keySet()){
+                Disciplina disciplina = this.disciplinas.get(key);
+                string += "\n               "+disciplina.getNomeDisciplina();
+            }
+            string += "\n";
+        }else{
+            string += ("Disciplinas: \n               O professor nao leciona nenhuma materia.\n");
+        }
+        if(this.disciplinas != null && this.disciplinas.size() != 0){
+            string += ("Lecionando:");
+            for(int key : this.lecionando.keySet()){
+                Materia materia = this.lecionando.get(key);
+                string += "\n               "+materia.getDisciplina().getNomeDisciplina()+"  curso -> "+materia.getCurso().getNomeDoCurso();
+            }
+        }else{
+            string += ("Lecionando: \n               O professor nao leciona nenhuma materia.\n");
+        }
         
         return string;
     }

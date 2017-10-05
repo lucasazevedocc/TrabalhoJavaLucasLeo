@@ -65,6 +65,15 @@ public class Aluno implements PadraoDAO{
         if( this.endereco != null && !this.endereco.isEmpty()){
             string += ("Endereco: "+this.endereco+"\n");
         }
+        if(this.cursando != null && this.cursando.size() != 0){
+            string += ("Cursos:");
+            for(int key : this.cursando.keySet()){
+                Curso curso = this.cursando.get(key);
+                string += "\n               "+curso.getNomeDoCurso();
+            }
+        }else{
+            string += ("Cursos: \n               O aluno nao esta em nenhum curso.");
+        }
         
         return string;
     }

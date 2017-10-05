@@ -183,7 +183,7 @@ public class PanelAdicionarCurso extends JPanel implements PadraoPanel,ActionLis
                 if(!cursoIsValid()){
                     JOptionPane.showMessageDialog(null,"Preencha os dados do professor corretamente.");
                 }else{
-                  if(curso.salvarAtual() || true){
+                  if(curso.salvarAtual()){
                         JOptionPane.showMessageDialog(null,"Curso salvo.");
                         this.campoNomeCurso.setText("");
                         this.curso = new Curso();

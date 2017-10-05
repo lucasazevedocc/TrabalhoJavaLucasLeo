@@ -21,8 +21,10 @@ public class PanelMostrarCursos extends JPanel implements PadraoPanel{
     private List<Object> cursos;
     
     public PanelMostrarCursos(){
-        initObjects();
         initViews();
+        initObjects();
+        inserirCursosNoTextArea();     
+
     }
 
     @Override
@@ -39,11 +41,10 @@ public class PanelMostrarCursos extends JPanel implements PadraoPanel{
         this.getLabelCursosDaFaculdade().setSize(230,30);
         this.getLabelCursosDaFaculdade().setFont(new Font("Serif", Font.BOLD, 14));
          
-        this.setTextAreaCursosExistentes(new JTextArea(""));
+        this.setTextAreaCursosExistentes(new JTextArea("\n\n\n\n\n\n\n\n                         carregando..."));
         this.getTextAreaCursosExistentes().setLocation(50,210);
         this.getTextAreaCursosExistentes().setSize(500,400);
         this.getTextAreaCursosExistentes().setFont(new Font("Serif", Font.BOLD, 14));
-        inserirCursosNoTextArea();     
        
         this.add(getLabelTitulo());
         this.add(getLabelCursosDaFaculdade());
@@ -60,26 +61,25 @@ public class PanelMostrarCursos extends JPanel implements PadraoPanel{
     
     @Override
     public void initControles() {
-        //this.salvando = false;
     }
     
-     private void inserirCursosNoTextArea(){
+    private void inserirCursosNoTextArea(){
+        this.getTextAreaCursosExistentes().setText("\n\n\n\n\n\n\n                         carregando...");
         if(this.getCursos().size() == 0){
            this.getTextAreaCursosExistentes().setText("\n\n\n\n\n\n\n\n\n\n                                         Não ha cursos cadastrados.");
         }else{
             String string = "";
-
             for(Iterator iterator = this.getCursos().iterator(); iterator.hasNext();){
                 Curso curso = (Curso)iterator.next();
                 string += curso.gerarString();
                 string += "\n\n";
             }
-
             this.getTextAreaCursosExistentes().setText(string);
+
         }
     }
     
-    public void atualizarTextArea(){
+    public void refresh(){
         initObjects();
         inserirCursosNoTextArea();
     }

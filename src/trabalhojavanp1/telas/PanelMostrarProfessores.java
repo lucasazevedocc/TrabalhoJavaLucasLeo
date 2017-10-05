@@ -24,6 +24,7 @@ public class PanelMostrarProfessores extends JPanel implements PadraoPanel{
     public PanelMostrarProfessores(){
         initObjects();
         initViews();
+        inserirProfessoresNoTextArea();
     }
 
     @Override
@@ -40,11 +41,10 @@ public class PanelMostrarProfessores extends JPanel implements PadraoPanel{
         this.getLabelProfessoresDaFaculdade().setSize(260,30);
         this.getLabelProfessoresDaFaculdade().setFont(new Font("Serif", Font.BOLD, 14));
          
-        this.setTextAreaProfessoresExistentes(new JTextArea(""));
+        this.setTextAreaProfessoresExistentes(new JTextArea("\n\n\n\n\n\n\n                         carregando..."));
         this.getTextAreaProfessoresExistentes().setLocation(50,210);
         this.getTextAreaProfessoresExistentes().setSize(500,400);
         this.getTextAreaProfessoresExistentes().setFont(new Font("Serif", Font.BOLD, 14));
-        inserirProfessoresNoTextArea();     
        
         this.add(getLabelTitulo());
         this.add(getLabelProfessoresDaFaculdade());
@@ -61,26 +61,25 @@ public class PanelMostrarProfessores extends JPanel implements PadraoPanel{
     
     @Override
     public void initControles() {
-       // this.salvando = false;
     }
     
-     private void inserirProfessoresNoTextArea(){
+    private void inserirProfessoresNoTextArea(){
+        this.getTextAreaProfessoresExistentes().setText("\n\n\n\n\n\n\n                         carregando...");
         if(this.getProfessores().size() == 0){
-           this.getTextAreaProfessoresExistentes().setText("\n\n\n\n\n\n\n\n\n\n                                      Não ha professores cadastrados.");
+           this.getTextAreaProfessoresExistentes().setText("\n\n\n\n\n\n\n\n\n\n                                         Não ha professores cadastrados.");
         }else{
             String string = "";
-
             for(Iterator iterator = this.getProfessores().iterator(); iterator.hasNext();){
                 Professor professor = (Professor)iterator.next();
                 string += professor.gerarString();
                 string += "\n\n";
             }
-
             this.getTextAreaProfessoresExistentes().setText(string);
+
         }
     }
     
-    public void atualizarTextArea(){
+    public void refresh(){
         initObjects();
         inserirProfessoresNoTextArea();
     }

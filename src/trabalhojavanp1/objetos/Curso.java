@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import interfaces.PadraoDAO;
+import java.util.Iterator;
 
 public class Curso implements PadraoDAO{
     private int codCurso;
@@ -53,16 +54,22 @@ public class Curso implements PadraoDAO{
     }
     
      public String gerarString(){
-        String string = "teste";
-        /*if( this.matricula != 0){
-            string += ("Matricula: "+this.matricula+"\n");
+        String string = "";
+        if( this.codCurso != 0){
+            string += ("Codigo do curso: "+this.codCurso+"\n");
         }
-        if( this.nome != null && !this.nome.isEmpty()){
-            string += ("Nome: "+this.nome+"\n");
+        if( this.nomeDoCurso != null && !this.nomeDoCurso.isEmpty()){
+            string += ("Nome: "+this.nomeDoCurso+"\n");
         }
-        if( this.endereco != null && !this.endereco.isEmpty()){
-            string += ("Endereco: "+this.endereco+"\n");
-        }*/
+        if(this.materias != null && this.materias.size() != 0){
+            string += ("Materias:");
+            for(Iterator it = this.materias.iterator();it.hasNext();){
+                Materia materia = (Materia)it.next();
+                string += "\n               "+materia.getDisciplina().getNomeDisciplina()+"  professor -> "+materia.getProfessor().getNome();
+            }
+        }else{
+            string += ("Materias: \n               O curso nao possui nenhuma materia.");
+        }
         
         return string;
     }
