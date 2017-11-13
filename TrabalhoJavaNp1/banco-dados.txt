@@ -1,0 +1,48 @@
+Olhe as configurações na classe connectionfactory o banco deve ser usuario root,
+	a senha deve ser casa e o servidor deve ser local
+
+
+create database np1 ;
+
+use np1;
+
+create table alunos(
+    matricula int not null primary key ,
+    nome char(40) not null ,
+    endereco char(60) not null
+);
+
+create table cursos(
+
+    id int primary key not null,
+    nome char(40) not null
+);
+
+create table aluno_curso(
+
+    id_curso int not null,
+    id_aluno int not null
+);
+
+create table disciplinas(
+	id int primary key not null, 
+	nome char(40) not null
+);
+
+create table curso_disciplina_professor(
+	id_materia int not null primary key auto_increment,
+	id_curso int ,
+	id_disciplina int ,
+	id_professor int 
+);
+
+create table professores(
+	id int primary key not null, 
+	nome char(40) not null, 
+	formacao char(60) not null
+);
+
+create table disciplina_professor(
+	id_disciplina int, 
+	id_professor int
+);
